@@ -6,7 +6,7 @@ export const Button = ({ type, title, href, color }) => {
     return (
       <div className={className.join(" ")}>
         <Link href={href}>
-          <a className="text-white font-bold">{title}</a>
+          <a className="text-white">{title}</a>
         </Link>
       </div>
     );
