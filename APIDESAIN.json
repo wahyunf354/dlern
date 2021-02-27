@@ -1,0 +1,177 @@
+[
+  {
+    "endpoint": "/landing-page",
+    "method": "POST",
+    "description": "endpoint ini untuk mengirimkan saran dan masukan yang ada dilanding page",
+    "body": {
+      "message": "String",
+      "email": "String"
+    },
+    "response": {
+      "200": {
+        "message": "String"
+      }
+    }
+  },
+  {
+    "endpoint": "/login",
+    "method": "POST",
+    "description": "endpoint ini untuk login user yang sudah punya akun",
+    "body": {
+      "email": "String",
+      "password": "String"
+    },
+    "response": {
+      "200": {
+        "uid": "string",
+        "message": "String"
+      }
+    }
+  },
+  {
+    "endpoint": "/register",
+    "method": "POST",
+    "description": "endpoint ini untuk membuat user baru",
+    "body": {
+      "email": "String",
+      "password": "String",
+      "jam_belajar": "String",
+      "hari_belajar": "Array",
+      "username": "String",
+      "img_profil": "File -> tidak wajib"
+    },
+    "response": {
+      "200": {
+        "uid": "String",
+        "message": "String"
+      }
+    }
+  },
+  {
+    "endpoint": "/user/:uid",
+    "description": "untuk get data user sesuai uid",
+    "method": "GET",
+    "response": {
+      "200": {
+        "email": "String",
+        "jam_belajar": "String",
+        "hari_belajar": "Array",
+        "username": "String",
+        "img_profil": "File",
+        "koin": "Number"
+      }
+    }
+  },
+  {
+    "endpoint": "/user",
+    "method": "PUT",
+    "description": "endpoint ini untuk membuat user baru",
+    "body": {
+      "uid": "String",
+      "email": "String",
+      "password": "String",
+      "jam_belajar": "String",
+      "hari_belajar": "Array",
+      "username": "String",
+      "img_profil": "File -> tidak wajib"
+    },
+    "response": {
+      "200": {
+        "uid": "String",
+        "message": "String"
+      }
+    }
+  },
+  {
+    "endpoint": "/kata-benda",
+    "description": "untuk get ada kosa kata benda",
+    "method": "GET",
+    "response": {
+      "200": [
+        {
+          "jerman": "String",
+          "indo": "String",
+          "img-url": "String",
+          "description": "String -> bila perlu"
+        }
+      ]
+    }
+  },
+  {
+    "endpoint": "/kata-kerja & /kata-sifat & /kata-bantu & /konjungsi & /proposisi",
+    "description": "untuk get seluruh kosa kata, terus '&' itu untuk menyingkat aja ",
+    "method": "GET",
+    "response": {
+      "200": [
+        {
+          "jerman": "String",
+          "indo": "String",
+          "description": "String -> bila perlu"
+        }
+      ]
+    }
+  },
+  {
+    "endpoint": "/game/:level",
+    "method": "GET",
+    "description": "untuk get soal dengan level, ",
+    "response": {
+      "200": [
+        {
+          "type": "String -> [s11, s12, s13, s21, s22, s23,s31, s32, s41]",
+          "soal": "Object",
+          "jawaban": "String"
+        },
+        {
+          "type": "s11",
+          "soal": {
+            "pertanyaan": "String",
+            "pilihan": ["String -> img-url"]
+          },
+          "jawaban": "String -> img-url"
+        },
+        {
+          "type": "s12",
+          "soal": {
+            "pertanyaan": "String -> voice-url",
+            "pilihan": ["String"]
+          },
+          "jawaban": "String"
+        },
+        {
+          "type": "s13",
+          "soal": {
+            "pertanyaan": "String",
+            "pilihan": ["String"]
+          },
+          "jawaban": ["String"]
+        },
+        {
+          "type": "s21",
+          "soal": {
+            "pertanyaan": "String",
+            "voice": "String -> voice-url"
+          },
+          "jawabang": "String"
+        }
+      ]
+    }
+  },
+  {
+    "endpoint": "/game/:level",
+    "description": "post koin setelah selesai game",
+    "method": "POST",
+    "body": {
+      "uid": "String",
+      "koin": "Number"
+    },
+    "response": {
+      "200": [
+        {
+          "message": "String",
+          "koin": "Number"
+        }
+      ]
+    }
+  }
+]
