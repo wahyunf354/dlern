@@ -1,8 +1,36 @@
 import Layout from "../components/Layout.js";
-import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../components/atom/Button.js";
-export default function Home() {
+
+function FromSaran() {
+  return (
+    <form className="flex flex-col md:px-96 px-5">
+      <label className="mb-2 font-bold text-gray-800 text-xl">
+        Email <span className="text-red-500">*</span>
+      </label>
+      <input
+        type="email"
+        placeholder="Masukan Email"
+        className="shadow-lg mb-6 border-2 border-gray-200 py-2 px-4 rounded-md"
+      />
+      <label className="mb-2 font-bold text-gray-800 text-xl">
+        Saran dan Masukan <span className="text-red-500">*</span>
+      </label>
+      <textarea
+        name="saran"
+        id="saran"
+        cols="30"
+        rows="10"
+        className="shadow-lg border-2 mb-6 border-gray-200 py-2 px-4 rounded-md"
+      ></textarea>
+      <button className="bg-yellow-500 rounded-lg py-2 px-5 text-white mb-6 md:w-min ">
+        Send
+      </button>
+    </form>
+  );
+}
+
+export default function Landing() {
   return (
     <Layout title="Landing Page">
       {/* navbar */}
@@ -33,7 +61,7 @@ export default function Home() {
             type="link"
             title="MULAI"
             href="/register"
-            className="bg-yellow-600 text-sm hover:bg-yellow-500 focus:bg-yellow-500"
+            className="bg-yellow-500 text-sm hover:bg-yellow-400 focus:bg-yellow-400"
           />
         </div>
       </div>
@@ -84,10 +112,11 @@ export default function Home() {
       </div>
 
       {/* Masukan dan saran */}
-      <div className="container mx-auto text-center">
-        <h1 className="text-gray-900 mb-5 font-bold text-4xl">
+      <div className="container mx-auto">
+        <h1 className="text-gray-900 mb-5 text-center font-bold text-4xl">
           Saran dan Masukan
         </h1>
+        <FromSaran />
       </div>
 
       {/* Contact */}
