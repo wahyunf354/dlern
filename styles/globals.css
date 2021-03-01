@@ -7,3 +7,17 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
+@layer components {
+  .input {
+    @apply shadow-lg mb-6 border-2 py-2 px-4 rounded-md;
+  }
+
+  .btn-primary {
+    @apply text-white py-2 px-6 bg-yellow hover:bg-yellow-light focus:bg-yellow-light;
+  }
+
+  .btn-secondary {
+    @apply text-white py-2 px-6 bg-gray-500 hover:bg-gray-400 focus:bg-gray-400;
+  }
+}

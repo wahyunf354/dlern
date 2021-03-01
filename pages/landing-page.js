@@ -1,17 +1,25 @@
 import Layout from "../components/Layout.js";
 import Image from "next/image";
-import { Button } from "../components/atom/Button.js";
+import Button from "../components/atom/Button.js";
+import { useState } from "react";
 
 function FromSaran() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmitBtn = () => {
+    console.log("OK");
+  };
+
   return (
-    <form className="flex flex-col md:px-96 px-5">
+    <div className="flex flex-col md:px-96 px-5">
       <label className="mb-2 font-bold text-gray-800 text-xl">
         Email <span className="text-red-500">*</span>
       </label>
       <input
+        name="email"
         type="email"
         placeholder="Masukan Email"
-        className="shadow-lg mb-6 border-2 border-gray-200 py-2 px-4 rounded-md"
+        className="input"
       />
       <label className="mb-2 font-bold text-gray-800 text-xl">
         Saran dan Masukan <span className="text-red-500">*</span>
@@ -21,12 +29,20 @@ function FromSaran() {
         id="saran"
         cols="30"
         rows="10"
-        className="shadow-lg border-2 mb-6 border-gray-200 py-2 px-4 rounded-md"
+        className="input"
       ></textarea>
-      <button className="bg-yellow-500 rounded-lg py-2 px-5 text-white mb-6 md:w-min ">
+
+      <Button
+        className="md:w-min mb-6"
+        isPrimary
+        hasRounded
+        hasShadow
+        isLoading={isLoading}
+        onClick={onSubmitBtn}
+      >
         Send
-      </button>
-    </form>
+      </Button>
+    </div>
   );
 }
 
@@ -59,10 +75,14 @@ export default function Landing() {
           <p className="mb-6 text-gray-400">Jade man kann sprechen</p>
           <Button
             type="link"
-            title="MULAI"
             href="/register"
-            className="bg-yellow-500 text-sm hover:bg-yellow-400 focus:bg-yellow-400"
-          />
+            className="text-sm"
+            isPrimary
+            hasRounded
+            hasShadow
+          >
+            MULAI
+          </Button>
         </div>
       </div>
 

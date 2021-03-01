@@ -1,15 +1,45 @@
 import Link from "next/link";
+//TODO: Mau buat Button dulu
+const Button = (props) => {
+  const className = [props.className];
+  if (props.isPrimary) className.push("btn-primary");
+  if (props.hasRounded) className.push("rounded-lg");
+  if (props.hasShadow) className.push("shadow-lg");
 
-export const Button = ({ type, title, href, className }) => {
-  if (type === "link") {
-    return (
-      <div className={"w-min px-6 py-2 rounded-md " + className}>
-        <Link href={href}>
-          <a className="text-white">{title}</a>
-        </Link>
-      </div>
-    );
-  } else if (type === "button") {
-    <button className={className.join(" ")}>{title}</button>;
+  const onClick = () => {
+    if (props.onClick) props.onClick();
+  };
+
+  if (props.isLoading || props.isDisabled) {
+    if (props.isLoading) {
+      className.push("text-center btn-secondary");
+      return (
+        <span className={className.join(" ")} style={props.style}>
+          {props.isLoading ? <>Loading...</> : props.children}
+        </span>
+      );
+    }
   }
+
+  if (props.type === "link") {
+    return (
+      <Link href={props.href}>
+        <a className={className.join(" ")} style={props.style}>
+          {props.children}
+        </a>
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      className={className.join(" ")}
+      style={props.style}
+      onClick={onClick}
+    >
+      {props.children}
+    </button>
+  );
 };
+
+export default Button;
