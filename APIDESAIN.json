@@ -112,7 +112,7 @@
     }
   },
   {
-    "endpoint": "/game/:level",
+    "endpoint": "/game/:session/:eps",
     "method": "GET",
     "description": "untuk get soal dengan level, ",
     "response": {
@@ -152,13 +152,63 @@
             "pertanyaan": "String",
             "voice": "String -> voice-url"
           },
-          "jawabang": "String"
+          "jawaban": "String"
+        },
+        {
+          "type": "s22",
+          "soal": {
+            "pertanyaanIndo": "String",
+            "voice": "String -> voice-url",
+            "pertanyaanJerman": "String",
+            "pilihan": ["String"]
+          },
+          "jawaban": "String"
+        },
+        {
+          "type": "s23",
+          "soal": {
+            "pertanyaan": "String",
+            "pilihan": ["String"]
+          },
+          "jawaban": "Staring"
+        },
+        {
+          "type": "s31",
+          "soal": {
+            "gambar": ["String => image-url"],
+            "pilihan": ["String"]
+          },
+          "jawaban": [
+            {
+              "gambar": "String",
+              "kata": "String"
+            }
+          ]
+        },
+        {
+          "type": "s32",
+          "soal": {
+            "voice": "String -> voice-url",
+            "gambar": "String -> image-url",
+            "kata": "String",
+            "huruf": ["String"]
+          },
+          "jawaban": "String"
+        },
+        {
+          "type": "s32",
+          "soal": {
+            "gambar": "String -> image-url",
+            "pertanyaan": "String",
+            "pilihan": ["String"]
+          },
+          "jawaban": "String"
         }
       ]
     }
   },
   {
-    "endpoint": "/game/:level",
+    "endpoint": "/game/:section/:eps",
     "description": "post koin setelah selesai game",
     "method": "POST",
     "body": {
