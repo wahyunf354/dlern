@@ -1,3 +1,6 @@
+import Email from "../components/molekul/Register/Email";
+import Password from "../components/molekul/Register/Password";
+
 function PrograssBar(props) {
   return (
     <div className="h-3 relative overflow-hidden">
@@ -12,12 +15,10 @@ function PrograssBar(props) {
 
 export default function Register() {
   return (
-    <>
+    <div className="h-screen">
       <PrograssBar width="50%" />
-      <h1>Registrasi</h1>
-      <div>
-        <input type="email" placeholder="Masukan Email" className="input" />
-      </div>
-    </>
+      {/* <Email /> */}
+      <Password />
+    </div>
   );
 }
