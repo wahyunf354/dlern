@@ -1,6 +1,7 @@
 import Email from "../components/molekul/Register/Email";
 import Password from "../components/molekul/Register/Password";
-
+import Days from "../components/molekul/Register/Days";
+import Hour from "../components/molekul/Register/Hour";
 function PrograssBar(props) {
   return (
     <div className="h-3 relative overflow-hidden">
@@ -18,7 +19,9 @@ export default function Register() {
     <div className="h-screen">
       <PrograssBar width="50%" />
       {/* <Email /> */}
-      <Password />
+      {/* <Password /> */}
+      {/* <Hour /> */}
+      <Days />
     </div>
   );
 }
