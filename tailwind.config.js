@@ -10,12 +10,15 @@ module.exports = {
       current: "currentColor",
       black: colors.black,
       white: colors.white,
-      gray: colors.trueGray,
+      gray: colors.gray,
       indigo: colors.indigo,
       red: colors.rose,
       yellow: {
         light: "#ff6026",
         DEFAULT: "#F05A20",
+      },
+      green: {
+        900: "#599CAA",
       },
     },
   },

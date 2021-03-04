@@ -6,7 +6,11 @@ function Email() {
     <>
       <div className="flex flex-col justify-center items-center h-3/4">
         <label className="mb-2 text-xl text-gray-700">Email</label>
-        <input type="email" placeholder="Masukan Email" className="input" />
+        <input
+          type="email"
+          placeholder="Masukan Email"
+          className="input w-10/12 md:w-1/3"
+        />
       </div>
       <div className="w-full flex">
         <Button

@@ -71,7 +71,7 @@ export default function Landing() {
           />
         </div>
         <div className="flex flex-col justify-center items-center py-4">
-          <h1 className="text-gray-900 font-bold text-4xl">D'lern</h1>
+          <h1 className="text-gray-800 font-bold text-8xl">D'lern</h1>
           <p className="mb-6 text-gray-400">Jade man kann sprechen</p>
           <Button
             type="link"
@@ -88,7 +88,7 @@ export default function Landing() {
 
       {/* apa itu D'lern */}
       <div className="px-6 md:px-96 mb-10">
-        <h1 className="font-bold text-2xl text-center my-4">Apa itu D'lern</h1>
+        <h1 className="font-bold text-4xl text-center my-4">Apa itu D'lern</h1>
         <p className="text-gray-600">
           <span className="text-xl text-gray-900 font-bold">D'Lern</span>{" "}
           didesain untuk umum makannya pakai bahasa Indonesia, untuk yang sudah
