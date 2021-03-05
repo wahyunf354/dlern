@@ -21,7 +21,7 @@ export default function Register() {
       {/* <Email /> */}
       {/* <Password /> */}
       {/* <Hour /> */}
-      <Days />
+      {/* <Days /> */}
     </div>
   );
 }

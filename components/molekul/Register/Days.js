@@ -3,10 +3,24 @@ import { useState } from "react";
 import Button from "../../atom/Button";
 
 function Days() {
-  const [senin, setSenin] = useState();
+  const [senin, setSenin] = useState(false);
+  const [selasa, setSelasa] = useState(false);
+  const [rabu, setRabu] = useState(false);
+  const [kamis, setKamis] = useState(false);
+  const [jumat, setJumat] = useState(false);
+  const [sabtu, setSabtu] = useState(false);
+  const [minggu, setMinggu] = useState(false);
 
-  const onChange = (e) => {
-    console.log(e.target.value);
+  const submitDays = () => {
+    let days = [];
+    if (senin) days.push("senin");
+    if (selasa) days.push("selasa");
+    if (rabu) days.push("rabu");
+    if (kamis) days.push("kamis");
+    if (jumat) days.push("jumat");
+    if (sabtu) days.push("sabtu");
+    if (minggu) days.push("minggu");
+    console.log(days);
   };
 
   return (
@@ -15,8 +29,7 @@ function Days() {
         <div class="grid gap-4">
           <label className="inline-flex items-center mt-3">
             <input
-              value={senin}
-              onChange={(e) => onChange(e)}
+              onChange={() => setSenin(!senin)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -24,6 +37,7 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              onChange={() => setSelasa(!selasa)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -31,6 +45,7 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              onChange={() => setRabu(!rabu)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -38,6 +53,7 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              onChange={() => setKamis(!kamis)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -46,12 +62,14 @@ function Days() {
           <label className="inline-flex items-center mt-3">
             <input
               type="checkbox"
+              onChange={() => setJumat(!jumat)}
               className="form-checkbox h-5 w-5 text-red-600"
             />
             <span className="ml-2 text-gray-700 text-xl">Jum'at</span>
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              onChange={() => setSabtu(!sabtu)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -59,23 +77,24 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              onChange={() => setMinggu(!minggu)}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
             <span className="ml-2 text-gray-700 text-xl">Minggu</span>
           </label>
         </div>
-        <div class="w-full flex">
-          <Button
-            isPrimary
-            hasShadow
-            hasRounded
-            className="ml-auto md:mx-auto mx-10"
-            onClick={() => console.log(senin)}
-          >
-            Finist
-          </Button>
-        </div>
+      </div>
+      <div class="w-full flex">
+        <Button
+          isPrimary
+          hasShadow
+          hasRounded
+          className="ml-auto md:mx-auto mx-10"
+          onClick={submitDays}
+        >
+          Finish
+        </Button>
       </div>
     </>
   );
