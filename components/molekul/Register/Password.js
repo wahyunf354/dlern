@@ -1,32 +1,41 @@
-import React from "react";
-import Button from "../../atom/Button";
+import React, { useState } from "react";
+import InputText from "../../atom/InputText";
+import { useForm } from "react-hook-form";
 
-function Password() {
+function Password({ onChange, value }) {
+  const [confPassword, setConfPassword] = useState("");
+
+  const handleChangeConfPassword = (event) => {
+    setConfPassword(event.target.value);
+  };
   return (
     <>
       <div className="flex flex-col justify-center items-center h-3/4">
-        <label className="mb-2 text-xl text-gray-700">Password</label>
-        <input
-          type="email"
-          placeholder="Masukan Password"
-          className="input w-10/12 md:w-1/3"
+        <label className="mb-2 text-lg text-gray-700">Password</label>
+        <InputText
+          type="password"
+          name="password"
+          id="password"
+          onChange={onChange}
+          value={value.password}
+          placeholder="Masukan password..."
+          errorResponse="Password harus terdiri dari 6 karakter"
+          outerClassName="w-10/12 md:w-1/3"
+          inputClassName="w-full"
         />
-        <label className="mb-2 text-xl text-gray-700">Confrim Password</label>
-        <input
-          type="email"
-          placeholder="Masukan Confrim Password"
-          className="input w-10/12 md:w-1/3"
+        <label className="mb-2 text-lg text-gray-700">Confirm Password</label>
+        <InputText
+          type="password"
+          name="confpassword"
+          id="confpassword"
+          valuePassword={value.password}
+          onChange={handleChangeConfPassword}
+          value={confPassword}
+          placeholder="Masukan password..."
+          errorResponse="Password tidak sama"
+          outerClassName="w-10/12 md:w-1/3"
+          inputClassName="w-full"
         />
-      </div>
-      <div class="w-full flex">
-        <Button
-          isPrimary
-          hasShadow
-          hasRounded
-          className="ml-auto md:mx-auto mx-10"
-        >
-          Lanjut
-        </Button>
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 const Button = (props) => {
   const className = [props.className];
   if (props.isPrimary) className.push("btn-primary");
+  if (props.isSecondary) className.push("btn-secondary");
   if (props.hasRounded) className.push("rounded-lg");
   if (props.hasShadow) className.push("shadow-lg");
 

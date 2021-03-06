@@ -11,6 +11,8 @@
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "^6.15.4",
+    "react-reveal": "^1.2.2",
     "react-simple-timefield": "^3.2.3"
   },
   "devDependencies": {
