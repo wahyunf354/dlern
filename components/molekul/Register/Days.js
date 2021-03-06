@@ -1,35 +1,25 @@
 import React from "react";
 import { useState } from "react";
-import Button from "../../atom/Button";
+import InputText from "../../atom/InputText";
 
-function Days() {
-  const [senin, setSenin] = useState(false);
-  const [selasa, setSelasa] = useState(false);
-  const [rabu, setRabu] = useState(false);
-  const [kamis, setKamis] = useState(false);
-  const [jumat, setJumat] = useState(false);
-  const [sabtu, setSabtu] = useState(false);
-  const [minggu, setMinggu] = useState(false);
-
-  const submitDays = () => {
-    let days = [];
-    if (senin) days.push("senin");
-    if (selasa) days.push("selasa");
-    if (rabu) days.push("rabu");
-    if (kamis) days.push("kamis");
-    if (jumat) days.push("jumat");
-    if (sabtu) days.push("sabtu");
-    if (minggu) days.push("minggu");
-    console.log(days);
+function Days({ onChange, value }) {
+  const handleChange = (e) => {
+    const target = {
+      target: {
+        name: e.target.name,
+        value: e.target.checked,
+      },
+    };
+    onChange(target);
   };
-
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-4/5">
-        <div class="grid gap-4">
+      <div className="flex flex-col justify-center items-center h-4/5 mb-24">
+        <div className="grid gap-4 grid-cols-2">
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setSenin(!senin)}
+              name="senin"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -37,7 +27,8 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setSelasa(!selasa)}
+              name="selasa"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -45,7 +36,8 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setRabu(!rabu)}
+              name="rabu"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -53,7 +45,8 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setKamis(!kamis)}
+              name="kamis"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -61,15 +54,17 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
+              name="jumat"
               type="checkbox"
-              onChange={() => setJumat(!jumat)}
+              onChange={handleChange}
               className="form-checkbox h-5 w-5 text-red-600"
             />
             <span className="ml-2 text-gray-700 text-xl">Jum'at</span>
           </label>
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setSabtu(!sabtu)}
+              name="sabtu"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
@@ -77,24 +72,14 @@ function Days() {
           </label>
           <label className="inline-flex items-center mt-3">
             <input
-              onChange={() => setMinggu(!minggu)}
+              name="minggu"
+              onChange={handleChange}
               type="checkbox"
               className="form-checkbox h-5 w-5 text-red-600"
             />
             <span className="ml-2 text-gray-700 text-xl">Minggu</span>
           </label>
         </div>
-      </div>
-      <div class="w-full flex">
-        <Button
-          isPrimary
-          hasShadow
-          hasRounded
-          className="ml-auto md:mx-auto mx-10"
-          onClick={submitDays}
-        >
-          Finish
-        </Button>
       </div>
     </>
   );

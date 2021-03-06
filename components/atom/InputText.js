@@ -10,14 +10,13 @@ export default function Text(props) {
     inputClassName,
     errorResponse,
     placeholder,
-    valuePassword,
+    password,
   } = props;
 
   const [hasError, setHasError] = useState(null);
   let pattern = "";
   if (type === "email") pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   if (type === "tel") pattern = "[0-9]*";
-  if (type === "password") pattern = /^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$/;
 
   const onChange = (event) => {
     const target = {
@@ -26,11 +25,6 @@ export default function Text(props) {
         value: event.target.value,
       },
     };
-
-    if (name === "confpassword") {
-      if (event.target.value !== valuePassword) setHasError(errorResponse);
-      else setHasError(null);
-    }
 
     if (type === "email") {
       if (!pattern.test(event.target.value)) setHasError(errorResponse);
@@ -43,6 +37,11 @@ export default function Text(props) {
       else setHasError(null);
     }
 
+    if (name === "confpassword") {
+      if (event.target.value === password) setHasError(null);
+      else setHasError(errorResponse);
+    }
+
     if (type === "tel") {
       if (event.target.validity.valid) props.onChange(target);
     } else {
@@ -50,18 +49,27 @@ export default function Text(props) {
     }
   };
 
+  let borderError = "";
+  if (hasError) {
+    borderError = "border-red-500";
+  } else {
+    borderError = "";
+  }
+
   return (
     <div className={["mb-3", outerClassName].join(" ")}>
       <input
         type={type}
         name={name}
         pattern={pattern}
-        className={["input", inputClassName].join(" ")}
+        className={["input", borderError, inputClassName].join(" ")}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
       />
-      {hasError && <span className="text-red-500 text-xs">{hasError}</span>}
+      <div className="overflow-hidden h-5">
+        {hasError && <span className="text-red-500 text-xs">{hasError}</span>}
+      </div>
     </div>
   );
 }
@@ -84,4 +92,5 @@ Text.propTypes = {
   errorResponse: propTypes.string,
   outerClassName: propTypes.string,
   inputClassName: propTypes.string,
+  password: propTypes.string,
 };

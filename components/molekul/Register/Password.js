@@ -3,11 +3,6 @@ import InputText from "../../atom/InputText";
 import { useForm } from "react-hook-form";
 
 function Password({ onChange, value }) {
-  const [confPassword, setConfPassword] = useState("");
-
-  const handleChangeConfPassword = (event) => {
-    setConfPassword(event.target.value);
-  };
   return (
     <>
       <div className="flex flex-col justify-center items-center h-3/4">
@@ -28,10 +23,10 @@ function Password({ onChange, value }) {
           type="password"
           name="confpassword"
           id="confpassword"
-          valuePassword={value.password}
-          onChange={handleChangeConfPassword}
-          value={confPassword}
-          placeholder="Masukan password..."
+          password={value.password}
+          onChange={onChange}
+          value={value.confpassword}
+          placeholder="Masukan confrim password..."
           errorResponse="Password tidak sama"
           outerClassName="w-10/12 md:w-1/3"
           inputClassName="w-full"

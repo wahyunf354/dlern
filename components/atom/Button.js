@@ -23,6 +23,7 @@ const Button = (props) => {
   }
 
   if (props.type === "link") {
+    className.push("text-center");
     return (
       <Link href={props.href}>
         <a className={className.join(" ")} style={props.style}>
