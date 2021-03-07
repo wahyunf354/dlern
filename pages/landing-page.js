@@ -2,6 +2,7 @@ import Layout from "../components/Layout.js";
 import Image from "next/image";
 import Button from "../components/atom/Button.js";
 import { useState } from "react";
+import Header from "../components/molekul/Header.js";
 
 function FromSaran() {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,14 +51,7 @@ export default function Landing() {
   return (
     <Layout title="Landing Page">
       {/* navbar */}
-      <nav className="flex px-8 justify-between py-6">
-        <Image
-          src="/assets/logo/logo.png"
-          alt="D'lern"
-          width={50}
-          height={50}
-        />
-      </nav>
+      <Header isRight />
 
       {/* banner */}
       <div className="container py-5 mb-10 mx-auto grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -75,7 +69,7 @@ export default function Landing() {
           <p className="mb-6 text-gray-400">Jade man kann sprechen</p>
           <Button
             type="link"
-            href="/register"
+            href="/welcome"
             className="text-sm"
             isPrimary
             hasRounded

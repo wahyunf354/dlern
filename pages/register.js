@@ -5,7 +5,7 @@ import Hour from "../components/molekul/Register/Hour";
 import Name from "../components/molekul/Register/Name";
 import Fade from "react-reveal/Fade";
 import { useState, useEffect } from "react";
-import Header from "../components/molekul/Register/Header";
+import Header from "../components/molekul/Header";
 import Stepper from "../components/atom/Stepper";
 import Meta from "../components/atom/Stepper/Meta";
 import MainContent from "../components/atom/Stepper/MainContent";
@@ -32,6 +32,12 @@ export default function Register() {
     sabtu: null,
     minggu: null,
   });
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) router.push("/home");
+    });
+  }, []);
 
   const onChange = (e) => {
     setData({

@@ -57,7 +57,7 @@ export default function Text(props) {
   }
 
   return (
-    <div className={["mb-3", outerClassName].join(" ")}>
+    <div className={[outerClassName].join(" ")}>
       <input
         type={type}
         name={name}

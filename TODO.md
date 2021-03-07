@@ -1,5 +1,6 @@
 - [x] masalah pada validasi password
-- [ ] membuat link di register menuju login dan sebaliknya
+- [x] membuat link di register menuju login dan sebaliknya
 - [ ] make function hendleLogin
 - [ ] make Home view
 - [ ] make kosa kata view
+- [ ] make cookies
