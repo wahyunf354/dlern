@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "../atom/Button";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
+import propTypes from "prop-types";
 
 function Menu({ toggleShowMenu }) {
   return (
@@ -101,6 +102,42 @@ function Header(props) {
       </header>
     );
   }
+
+  if (props.isBack) {
+    return (
+      <header className="flex justify-between py-3 px-3 md:px-5 border-b-2 border-grey-600 w-full">
+        <Button className="flex items-center" type="link" href={props.href}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="h-6 w-6 text-gray-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </Button>
+        <Button
+          type="link"
+          href="/landing-page"
+          className="text-2xl font-bold text-yellow"
+        >
+          <Image
+            src="/assets/logo/logo.png"
+            alt="D'lern"
+            width={36}
+            height={36}
+          />
+        </Button>
+      </header>
+    );
+  }
+
   return (
     <header className="flex justify-center items-center py-4 border-b-2 border-grey-600 w-full">
       <Button
@@ -113,5 +150,9 @@ function Header(props) {
     </header>
   );
 }
+
+Header.propTypes = {
+  isFull: propTypes.bool,
+};
 
 export default Header;

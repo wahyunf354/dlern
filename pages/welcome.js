@@ -3,6 +3,7 @@ import Fade from "react-reveal/Fade";
 import Button from "../components/atom/Button";
 import firebase from "../config/firebase";
 import useRouter from "next/router";
+import Layout from '../components/Layout'
 
 function welcome() {
   const router = useRouter;
@@ -14,7 +15,7 @@ function welcome() {
 
   return (
     <Fade>
-      <div className="min-h-screen bg-gray-300 py-6 flex flex-col justify-center sm:py-12">
+      <Layout title="Welcome" className="min-h-screen bg-gray-300 py-6 flex flex-col justify-center sm:py-12">
         <div className="py-3 md:w-1/3 text-center sm:max-w-xl sm:mx-auto">
           <div className="bg-white min-w-1xl flex flex-col rounded-xl shadow-lg">
             <div className="px-12 py-5">
@@ -58,7 +59,7 @@ function welcome() {
             </div>
           </div>
         </div>
-      </div>
+      </Layout>
     </Fade>
   );
 }

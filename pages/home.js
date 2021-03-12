@@ -4,11 +4,12 @@ import useRouter from "next/router";
 import Header from "../components/molekul/Header";
 import Button from "../components/atom/Button";
 import Image from "next/image";
+import Layout from '../components/Layout'
 
 function ContentHome(props) {
   return (
     <>
-      <div className="container md:px-36 px-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-10 pt-10">
+      <div className="container relative md:px-36 px-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-10 pt-10">
         <div className="md:col-span-2">
           <h1 className="text-blue-900 text-2xl font-bold">
             Hi, {props.nameUser}
@@ -16,7 +17,7 @@ function ContentHome(props) {
         </div>
         <Button
           className="py-4 border-1"
-          href=""
+          href="/kosa-kata"
           type="link"
           hasShadow
           hasRounded
@@ -27,10 +28,22 @@ function ContentHome(props) {
             height={140}
             layout="responsive"
           />
-          <h2>Kosa Kata</h2>
+          <h2 className="hover:text-gray-500">Kosa Kata</h2>
         </Button>
-        <Button className="py-4" hasShadow hasRounded>
-          Games
+        <Button 
+          className="py-4"
+          hasShadow 
+          hasRounded
+          href="#"
+          type="link"
+         >
+         <Image
+           src="/assets/illustrasi/game.png"
+           width={200}
+           height={140}
+           layout="responsive"
+         />
+          <h2 className="hover:text-gray-500">Ayo Belajar</h2>
         </Button>
       </div>
     </>
@@ -42,16 +55,18 @@ function home() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
+      console.log(user.uid);
+      // TODO: Mengambil data user dari db
+
       if (!user) router.push("/login");
     });
   }, []);
 
   return (
-    <>
+    <Layout title="Home | D'lern">
       <Header isFull />
       <ContentHome nameUser="Wahyu Nur Fadillah" />
-    </>
+    </Layout>
   );
 }
 
