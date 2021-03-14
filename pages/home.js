@@ -4,7 +4,7 @@ import useRouter from "next/router";
 import Header from "../components/molekul/Header";
 import Button from "../components/atom/Button";
 import Image from "next/image";
-import Layout from '../components/Layout'
+import Layout from "../components/Layout";
 
 function ContentHome(props) {
   return (
@@ -30,19 +30,13 @@ function ContentHome(props) {
           />
           <h2 className="hover:text-gray-500">Kosa Kata</h2>
         </Button>
-        <Button 
-          className="py-4"
-          hasShadow 
-          hasRounded
-          href="#"
-          type="link"
-         >
-         <Image
-           src="/assets/illustrasi/game.png"
-           width={200}
-           height={140}
-           layout="responsive"
-         />
+        <Button className="py-4" hasShadow hasRounded href="/games" type="link">
+          <Image
+            src="/assets/illustrasi/game.png"
+            width={200}
+            height={140}
+            layout="responsive"
+          />
           <h2 className="hover:text-gray-500">Ayo Belajar</h2>
         </Button>
       </div>

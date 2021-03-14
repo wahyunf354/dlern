@@ -28,17 +28,22 @@ function Menu({ toggleShowMenu }) {
           </Button>
           <ul className="divide-y divide-yellow-light grid grid-cols-1">
             <li className="py-3 text-gray-700">
+              <Button type="link" href="/home">
+                Home
+              </Button>
+            </li>
+            <li className="py-3 text-gray-700">
               <Button type="link" href="/kosa-kata">
                 Vocab
               </Button>
             </li>
             <li className="py-3 text-gray-700">
-              <Button type="link" href="/kosa-kata">
+              <Button type="link" href="/games">
                 Games
               </Button>
             </li>
             <li className="py-3 text-gray-700">
-              <Button type="link" href="/kosa-kata">
+              <Button type="link" href="">
                 Dark Mode(soon)
               </Button>
             </li>

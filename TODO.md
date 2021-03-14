@@ -1,6 +1,8 @@
 - [x] masalah pada validasi password
 - [x] membuat link di register menuju login dan sebaliknya
-- [ ] make function hendleLogin
-- [ ] make Home view
-- [ ] make kosa kata view
-- [ ] make cookies
+- [x] make function hendleLogin
+- [x] make Home view
+- [x] make kosa kata view
+- [x] make cookies
+- [x] Search on katabenda
+- [ ] Membuat tampilan level game
