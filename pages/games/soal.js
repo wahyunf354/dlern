@@ -1,12 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-function Soal() {
-  const router = useRouter();
+const Soal = () => {
+  const level = useRouter().query.level;
 
-  const { pid } = router.query;
-
-  return <>Hello - {pid}</>;
-}
+  return <>Hello - {level} </>;
+};
 
 export default Soal;
