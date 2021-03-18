@@ -7,13 +7,16 @@ function Games() {
   return (
     <Layout title="Games | D'lern">
       <Header isFull />
-      <main className="container mx-auto p-5 md:p-16 relative">
+      <main className="container grid justify-items-stretch grid-cols-1 mx-auto p-8 md:p-16 relative">
         <Button
           type="link"
-          href="#"
+          href={{
+            pathname: "/games/soal/[id]",
+            query: { id: 5 },
+          }}
           isPrimary
           hasShadow
-          className="flex absolute right-10 justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+          className="flex justify-self-end justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
         >
           1
         </Button>
@@ -23,7 +26,7 @@ function Games() {
           href="#"
           isPrimary
           hasShadow
-          className="flex absolute left-10 top-24 justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+          className="flex justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
         >
           2
         </Button>
@@ -33,7 +36,7 @@ function Games() {
           href="#"
           isPrimary
           hasShadow
-          className="flex absolute right-10 top-48 justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+          className="flex justify-self-end justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
         >
           3
         </Button>
@@ -43,7 +46,7 @@ function Games() {
           href="#"
           isPrimary
           hasShadow
-          className="flex absolute left-10 top-72 justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+          className="flex justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
         >
           4
         </Button>
@@ -53,9 +56,19 @@ function Games() {
           href="#"
           isPrimary
           hasShadow
-          className="flex absolute right-10 top-96 justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+          className="flex justify-self-end justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
         >
           5
+        </Button>
+
+        <Button
+          type="link"
+          href="#"
+          isPrimary
+          hasShadow
+          className="flex justify-center items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24"
+        >
+          6
         </Button>
       </main>
     </Layout>
