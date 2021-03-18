@@ -158,6 +158,8 @@ function Header(props) {
 
 Header.propTypes = {
   isFull: propTypes.bool,
+  isBack: propTypes.bool,
+  href: propTypes.string,
 };
 
 export default Header;
