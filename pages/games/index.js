@@ -23,7 +23,7 @@ function Games() {
   return (
     <Layout title="Games | D'lern">
       <Header isFull />
-      <main className="container grid justify-items-stretch grid-cols-1 mx-auto p-8 md:p-16 relative">
+      <main className="container grid justify-items-stretch grid-cols-1 mx-auto w-72 py-16 relative">
         <GameLink level={1} />
         <GameLink level={2} />
         <GameLink level={3} />

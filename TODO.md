@@ -5,4 +5,5 @@
 - [x] make kosa kata view
 - [x] make cookies
 - [x] Search on katabenda
-- [ ] Membuat tampilan level game
+- [x] Membuat tampilan level game
+- [ ] Membuat soal sesuai type

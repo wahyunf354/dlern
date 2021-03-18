@@ -21,6 +21,7 @@ module.exports = {
       green: {
         900: "#599CAA",
       },
+      tail: colors.green,
     },
   },
   variants: {
