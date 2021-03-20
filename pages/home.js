@@ -85,8 +85,8 @@ function home() {
     <Layout title="Home | D'lern">
       <Header isFull />
       {loading ? (
-        <div className="container p-4">
-          <Spinner />
+        <div className="container p-4 mx-auto">
+          <Spinner isCenter isGreen isMedium />
         </div>
       ) : (
         <ContentHome nameUser={user.name} />

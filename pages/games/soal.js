@@ -6,6 +6,7 @@ import soal from "../../data-soal";
 import PopupCorrect from "../../components/molekul/Game/PopupCorrect";
 import PopupWrong from "../../components/molekul/Game/PopupWrong";
 import SesionSatuSatu from "../../components/molekul/Game/SesionSatuSatu";
+import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
 
 const FinistGame = () => {
   return (
@@ -38,6 +39,8 @@ const Soal = () => {
     const nextQuestion = currectQuestion + 1;
     if (nextQuestion < soalme.length) {
       setCurrentQuestion(nextQuestion);
+      setIsWrong(false);
+      setIsCorrect(false);
     } else {
       setIsShowFinist(true);
     }
@@ -52,10 +55,18 @@ const Soal = () => {
           <Header isBack href="/games" />
           {isCorrect && <PopupCorrect handleClickNext={handleNextQuestions} />}
           {isWrong && <PopupWrong handleClickNext={handleNextQuestions} />}
-          <SesionSatuSatu
-            soal={soalme[currectQuestion].soal}
-            handleClickAnswer={handleClickAnswer}
-          />
+          {soalme[currectQuestion].type == "s11" && (
+            <SesionSatuSatu
+              soal={soalme[currectQuestion].soal}
+              handleClickAnswer={handleClickAnswer}
+            />
+          )}
+          {soalme[currectQuestion].type == "s12" && (
+            <SesionSatuDua
+              soal={soalme[currectQuestion].soal}
+              handleClickAnswer={handleClickAnswer}
+            />
+          )}
         </>
       )}
     </Layout>

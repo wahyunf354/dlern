@@ -7,3 +7,4 @@
 - [x] Search on katabenda
 - [x] Membuat tampilan level game
 - [ ] Membuat soal sesuai type
+- [ ] Memeri peringatan ketika user kelua saaat didalam game
