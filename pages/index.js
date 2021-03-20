@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
 
 export default function Splas() {
   const router = useRouter();
@@ -12,7 +12,10 @@ export default function Splas() {
   });
 
   return (
-    <Layout title="d'lern" className="container h-screen w-screen flex justify-center items-center">
+    <Layout
+      title="d'lern"
+      className="container h-screen w-screen flex justify-center items-center"
+    >
       <Image
         src="/assets/logo/logo.png"
         alt="D'lern"

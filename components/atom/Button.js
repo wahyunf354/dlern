@@ -16,7 +16,7 @@ const Button = (props) => {
       className.push("text-center btn-secondary");
       return (
         <span className={className.join(" ")} style={props.style}>
-          {props.isLoading ? <>Loading...</> : props.children}
+          {props.isLoading ? <>Tunggu...</> : props.children}
         </span>
       );
     }

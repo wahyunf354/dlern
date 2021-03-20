@@ -83,6 +83,11 @@ export default function Register() {
       });
   };
 
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
   const steps = {
     name: {
       title: "Nama",
@@ -144,13 +149,13 @@ export default function Register() {
                   type="link"
                   href="landing-page"
                 >
-                  Cancel
+                  Batal
                 </Button>
               </Controller>
             )}
             {CurrentStep === "email" && (
               <Controller>
-                {data.email !== "" && (
+                {data.email !== "" && validateEmail(data.email) && (
                   <Fade>
                     <div className="md:w-1/3 w-10/12">
                       <Button
@@ -172,7 +177,7 @@ export default function Register() {
                   onClick={prevStep}
                   className="mt-5 md:w-1/3 w-10/12"
                 >
-                  Back
+                  Kembali
                 </Button>
               </Controller>
             )}
@@ -200,7 +205,7 @@ export default function Register() {
                   onClick={prevStep}
                   className="mt-5 md:w-1/3 w-10/12"
                 >
-                  Back
+                  Kembali
                 </Button>
               </Controller>
             )}
@@ -220,7 +225,7 @@ export default function Register() {
                   onClick={prevStep}
                   className="mt-5"
                 >
-                  Back
+                  Kembali
                 </Button>
               </Controller>
             )}
@@ -230,7 +235,7 @@ export default function Register() {
                   <Fade>
                     {isLoading ? (
                       <Button isLoading isSecondary hasShadow hasRounded>
-                        Loading
+                        Tunggu
                       </Button>
                     ) : (
                       <Button
@@ -239,7 +244,7 @@ export default function Register() {
                         hasRounded
                         onClick={handleSubmit}
                       >
-                        Finish
+                        Selesai
                       </Button>
                     )}
                   </Fade>
@@ -251,7 +256,7 @@ export default function Register() {
                   onClick={prevStep}
                   className="mt-5"
                 >
-                  Back
+                  Kembali
                 </Button>
               </Controller>
             )}

@@ -3,8 +3,24 @@ import Button from "../atom/Button";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
 import propTypes from "prop-types";
-
+import firebase from "../../config/firebase";
+import useRouter from "next/router";
 function Menu({ toggleShowMenu }) {
+  const router = useRouter;
+
+  const handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        router.push("/welcome");
+      })
+      .catch((error) => {
+        alert(error.message);
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="absolute z-10 top-0 bg-opacity-50 bottom-0 left-0 right-0 bg-gray-200"></div>
@@ -47,6 +63,9 @@ function Menu({ toggleShowMenu }) {
                 Dark Mode(soon)
               </Button>
             </li>
+            <li className="py-3 text-gray-700">
+              <Button onClick={handleLogout}>log out</Button>
+            </li>
           </ul>
         </div>
       </Fade>
@@ -72,6 +91,7 @@ function Header(props) {
       </nav>
     );
   }
+
   if (props.isFull) {
     return (
       <header className="flex justify-between py-3 px-3 md:px-5 border-b-2 border-grey-600 w-full">

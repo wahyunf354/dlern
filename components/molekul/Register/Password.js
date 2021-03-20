@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import InputText from "../../atom/InputText";
-import { useForm } from "react-hook-form";
 
 function Password({ onChange, value }) {
   return (
