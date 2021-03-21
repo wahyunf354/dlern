@@ -7,7 +7,7 @@ const GameLink = ({ level }) => {
   return (
     <Button
       type="link"
-      href={`games/soal?level=${level}`}
+      href={`/games/soal?level=${level}`}
       isPrimary
       hasShadow
       className={`flex ${
@@ -21,7 +21,7 @@ const GameLink = ({ level }) => {
 
 function Games() {
   return (
-    <Layout title="Games | D'lern">
+    <Layout title="Games | De'lern">
       <Header isFull />
       <main className="container grid justify-items-stretch grid-cols-1 mx-auto w-72 py-16 relative">
         <GameLink level={1} />

@@ -52,7 +52,6 @@ function home() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user.uid);
       firebase
         .firestore()
         .collection("users")
@@ -82,7 +81,7 @@ function home() {
   }, []);
 
   return (
-    <Layout title="Home | D'lern">
+    <Layout title="Home | De'lern">
       <Header isFull />
       {loading ? (
         <div className="container p-4 mx-auto">

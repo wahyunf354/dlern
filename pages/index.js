@@ -13,12 +13,12 @@ export default function Splas() {
 
   return (
     <Layout
-      title="d'lern"
+      title="De'lern"
       className="container h-screen w-screen flex justify-center items-center"
     >
       <Image
         src="/assets/logo/logo.png"
-        alt="D'lern"
+        alt="De'lern"
         width={150}
         height={150}
       />

@@ -35,9 +35,9 @@ function Menu({ toggleShowMenu }) {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
@@ -84,7 +84,7 @@ function Header(props) {
       <nav className="flex px-8 justify-between py-6">
         <Image
           src="/assets/logo/logo.png"
-          alt="D'lern"
+          alt="De'lern"
           width={50}
           height={50}
         />
@@ -104,9 +104,9 @@ function Header(props) {
             className="h-6 w-6 text-gray-500"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M4 6h16M4 12h8m-8 6h16"
             />
           </svg>
@@ -119,7 +119,7 @@ function Header(props) {
         >
           <Image
             src="/assets/logo/logo.png"
-            alt="D'lern"
+            alt="De'lern"
             width={36}
             height={36}
           />
@@ -140,9 +140,9 @@ function Header(props) {
             className="h-6 w-6 text-gray-500"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
@@ -154,7 +154,7 @@ function Header(props) {
         >
           <Image
             src="/assets/logo/logo.png"
-            alt="D'lern"
+            alt="De'lern"
             width={36}
             height={36}
           />
@@ -170,7 +170,7 @@ function Header(props) {
         href="index"
         className="text-2xl font-bold text-yellow"
       >
-        D'lern
+        De'lern
       </Button>
     </header>
   );

@@ -6,7 +6,7 @@ export default {
         {
           type: "s11",
           soal: {
-            pertanyaan: "Gambar mana yang orang?",
+            pertanyaan: 'Mana kata yang tepat untuk "Susu"?',
             pilihan: [
               "https://placeimg.com/512/512/animals",
               "https://placeimg.com/512/512/arch",
@@ -19,7 +19,7 @@ export default {
         {
           type: "s12",
           soal: {
-            pertanyaan: "Gambar mana yang orang?",
+            pertanyaan: "./public/assets/sound/an.mp4",
             pilihan: [
               "https://placeimg.com/512/512/animals",
               "https://placeimg.com/512/512/arch",

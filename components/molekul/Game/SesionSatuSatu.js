@@ -4,7 +4,7 @@ import Button from "../../atom/Button";
 
 function SesionSatuSatu({ soal, handleClickAnswer }) {
   const handleClick = (answer) => {
-    if (answer == soal.jawaban) {
+    if (answer.name == soal.jawaban) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);
@@ -15,13 +15,14 @@ function SesionSatuSatu({ soal, handleClickAnswer }) {
       <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
       {soal.pilihan.map((answer, i) => (
         <Button
-          className="p-2 border lg:w-60 lg:h-60 md:h-30 md:w-30"
+          className="p-2 border lg:w-60 md:w-30"
           key={i}
           hasRounded
           hasShadow
           onClick={() => handleClick(answer)}
         >
-          <img src={answer} />
+          <img src={answer.imgUrl} />
+          <p className="py-2">{answer.name}</p>
         </Button>
       ))}
     </main>

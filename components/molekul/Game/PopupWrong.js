@@ -16,9 +16,9 @@ const PopupCorrect = ({ handleClickNext }) => {
             className="h-12 mr-5 w-12 text-blue-900"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
@@ -38,9 +38,9 @@ const PopupCorrect = ({ handleClickNext }) => {
               className="h-8 w-8 text-blue-900"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M13 5l7 7-7 7M5 5l7 7-7 7"
               />
             </svg>

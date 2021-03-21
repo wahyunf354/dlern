@@ -1,12 +1,8 @@
-import React from 'react'
-import Layout from '../../components/Layout'
+import React from "react";
+import Layout from "../../components/Layout";
 
 function Konjungsi() {
-  return (
-    <Layout title="Konjungsi | D'lern">
-      Konjungsi
-    </Layout>
-  )
+  return <Layout title="Konjungsi | De'lern">Konjungsi</Layout>;
 }
 
-export default Konjungsi
+export default Konjungsi;

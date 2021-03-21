@@ -9,7 +9,7 @@ const KataBenda = () => {
     console.log(e.target.value);
   };
   return (
-    <Layout title="Kata Benda | D'lern">
+    <Layout title="Kata Benda | De'lern">
       <Header isBack href="/kosa-kata" />
       <main className="container mt-5 mx-auto px-5 md:px-24 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
         <h2 className="col-span-2 md:col-span-6 text-4xl font-bold text-gray-900">

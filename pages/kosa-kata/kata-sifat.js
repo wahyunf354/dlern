@@ -1,12 +1,8 @@
-import React from 'react'
-import Layout from '../../components/Layout'
+import React from "react";
+import Layout from "../../components/Layout";
 
 function KataSifat() {
-  return (
-    <Layout title="Kata Sifat | D'lern">
-      Kata Sifat
-    </Layout>
-  )
+  return <Layout title="Kata Sifat | De'lern">Kata Sifat</Layout>;
 }
 
-export default KataSifat
+export default KataSifat;
