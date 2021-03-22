@@ -19,30 +19,65 @@ function SesionSatuTiga({ soal, handleClickAnswer }) {
     setAnswer([...answer, choice]);
   };
 
+  const handleRemoveChoice = (choice) => {
+    const tmpArr = answer;
+    const indexWillRemove = tmpArr.indexOf(choice);
+    if (indexWillRemove !== -1) {
+      tmpArr.splice(indexWillRemove, 1);
+      setAnswer([...tmpArr]);
+    }
+  };
+
   return (
     <Fade>
       <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
         <h1 className="text-xl">Tulis dalam Bahasa Indonesia</h1>
         <p className="mb-10 text-gray-500 text-xl">{soal.pertanyaan}</p>
-        <InputText
-          value={answer.join(" ")}
-          placeholder=""
-          outerClassName="w-10/12 md:w-1/3 mb-24"
-          inputClassName="w-full"
-        />
-        <div className="text-center">
-          {soal.pilihan.map((answer, i) => (
+
+        <div className="text-center p-3 mb-10 border h-28 md:w-1/2 w-full rounded-lg">
+          {answer.map((answer, i) => (
             <Button
-              isPrimary
+              isSecondary
               hasRounded
               hasShadow
-              className="m-2"
+              className="mb-2 mx-1"
               key={i}
-              onClick={() => handleClickChoice(answer)}
+              onClick={() => handleRemoveChoice(answer)}
             >
               <p>{answer}</p>
             </Button>
           ))}
+        </div>
+
+        <div className="text-center">
+          {soal.pilihan.map((choice, i) => {
+            return (
+              answer.every((current) => current !== choice) && (
+                <Button
+                  isSecondary
+                  hasRounded
+                  hasShadow
+                  className="m-1"
+                  key={i}
+                  onClick={() => handleClickChoice(choice)}
+                >
+                  <p>{choice}</p>
+                </Button>
+              )
+            );
+          })}
+        </div>
+
+        <div className="w-full md:w-1/2 mt-16">
+          <Button
+            isPrimary
+            hasShadow
+            hasRounded
+            className="w-full"
+            onClick={() => handleClick(answer.join(" "))}
+          >
+            Lanjut
+          </Button>
         </div>
       </main>
     </Fade>
