@@ -1,92 +1,63 @@
 import React, { useState } from "react";
-import InputText from "../../atom/InputText";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
+import InputText from "../../../components/atom/InputText";
 
-function SesionSatuTiga({ soal, handleClickAnswer }) {
-  const [answer, setAnswer] = useState([]);
+function SesionDuaSatu({ question, handleClickAnswer }) {
+  const { soal, jawaban } = question;
+  const [answare, setAnsware] = useState("");
 
   const handleClick = (answer) => {
-    if (answer == soal.jawaban) {
+    console.log(answer);
+    console.log(jawaban);
+    if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);
     }
   };
 
-  const handleClickChoice = (choice) => {
-    setAnswer([...answer, choice]);
-  };
-
-  const handleRemoveChoice = (choice) => {
-    const tmpArr = answer;
-    const indexWillRemove = tmpArr.indexOf(choice);
-    if (indexWillRemove !== -1) {
-      tmpArr.splice(indexWillRemove, 1);
-      setAnswer([...tmpArr]);
-    }
+  const playAudio = async (url) => {
+    console.log("play");
+    const audio = new Audio(url);
+    await audio.play();
   };
 
   return (
     <Fade>
-      <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
-        <h1 className="text-xl">Tulis dalam Bahasa Indonesia</h1>
-        <p className="mb-10 text-gray-500 text-xl">{soal.pertanyaan}</p>
-
-        <div className="text-center p-3 mb-10 border h-28 md:w-1/2 w-full rounded-lg">
-          {answer.map((answer, i) => (
-            <Button
-              isSecondary
-              hasRounded
-              hasShadow
-              className="mb-2 mx-1"
-              key={i}
-              onClick={() => handleRemoveChoice(answer)}
-            >
-              <p>{answer}</p>
-            </Button>
-          ))}
-        </div>
-
-        <div className="text-center">
-          {soal.pilihan.map((choice, i) => {
-            return (
-              answer.every((current) => current !== choice) && (
-                <Button
-                  isSecondary
-                  hasRounded
-                  hasShadow
-                  className="m-1"
-                  key={i}
-                  onClick={() => handleClickChoice(choice)}
-                >
-                  <p>{choice}</p>
-                </Button>
-              )
-            );
-          })}
-        </div>
-
-        <div className="w-full md:w-1/2 mt-16">
-          <Button
-            isPrimary
-            hasShadow
-            hasRounded
-            className="w-full"
-            onClick={() => handleClick(answer.join(" "))}
-          >
-            Lanjut
-          </Button>
-        </div>
+      <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
+        <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
+        <Button onClick={() => playAudio(soal.voice)}>
+          <img
+            src="/assets/icons/speaker.svg"
+            className="w-30 h-30 text-yellow"
+          />
+        </Button>
+        <InputText
+          value={answare}
+          name="answare"
+          outerClassName="mt-10"
+          placeholder="Masukan jawaban kamu?"
+          isOffAutoComplete
+          onChange={(e) => setAnsware(e.target.value)}
+        />
+        <Button
+          isPrimary
+          hasShadow
+          hasRounded
+          onClick={() => handleClick(answare)}
+        >
+          Lanjut
+        </Button>
       </main>
     </Fade>
   );
 }
 
-SesionSatuTiga.propTypes = {
-  soal: propTypes.object.isRequired,
+SesionDuaSatu.propTypes = {
+  question: propTypes.object.isRequired,
   handleClickAnswer: propTypes.func,
 };
 
-export default SesionSatuTiga;
+export default SesionDuaSatu;

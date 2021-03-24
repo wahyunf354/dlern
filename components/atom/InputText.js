@@ -11,6 +11,7 @@ export default function Text(props) {
     errorResponse,
     placeholder,
     password,
+    isOffAutoComplete,
   } = props;
 
   const [hasError, setHasError] = useState(null);
@@ -66,6 +67,7 @@ export default function Text(props) {
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        autoComplete={isOffAutoComplete ? "off" : "on"}
       />
       <div className="overflow-hidden h-5">
         {hasError && <span className="text-red-500 text-xs">{hasError}</span>}
@@ -93,4 +95,5 @@ Text.propTypes = {
   outerClassName: propTypes.string,
   inputClassName: propTypes.string,
   password: propTypes.string,
+  isOffAutoComplete: propTypes.bool,
 };

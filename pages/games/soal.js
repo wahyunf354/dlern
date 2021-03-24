@@ -7,8 +7,9 @@ import PopupWrong from "../../components/molekul/Game/PopupWrong";
 import SesionSatuSatu from "../../components/molekul/Game/SesionSatuSatu";
 import Button from "../../components/atom/Button";
 import SesionSatuTiga from "../../components/molekul/Game/SesionSatuTiga";
-import SesionDuaSatu from "../components/molekul/Game/SesionDuaSatu";
+import SesionDuaSatu from "../../components/molekul/Game/SesionDuaSatu";
 import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
+import SesionDuaDua from "../../components/molekul/Game/SesionDuaDua";
 import firebase from "../../config/firebase";
 import Spinner from "../../components/atom/Spinner";
 
@@ -92,7 +93,7 @@ const Soal = () => {
   const [isWrong, setIsWrong] = useState(false);
   const [isShowFinist, setIsShowFinist] = useState(false);
   const level = useRouter().query.level;
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     if (level)
@@ -103,6 +104,7 @@ const Soal = () => {
         .get()
         .then((result) => {
           result.forEach((doc) => {
+            console.log(doc.data());
             setCurrentSoals(doc.data().soals);
           });
           setIsLoading(false);
@@ -217,7 +219,14 @@ const Soal = () => {
 
               {currentSoals[currectQuestion].type == "s21" && (
                 <SesionDuaSatu
-                  soal={currentSoals[currectQuestion.soal]}
+                  question={currentSoals[currectQuestion]}
+                  handleClickAnswer={handleClickAnswer}
+                />
+              )}
+
+              {currentSoals[currectQuestion].type == "s22" && (
+                <SesionDuaDua
+                  question={currentSoals[currectQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
