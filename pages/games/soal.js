@@ -5,17 +5,26 @@ import Header from "../../components/molekul/Header";
 import PopupCorrect from "../../components/molekul/Game/PopupCorrect";
 import PopupWrong from "../../components/molekul/Game/PopupWrong";
 import SesionSatuSatu from "../../components/molekul/Game/SesionSatuSatu";
-
+import Button from "../../components/atom/Button";
 import SesionSatuTiga from "../../components/molekul/Game/SesionSatuTiga";
 
 import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
 import firebase from "../../config/firebase";
 import Spinner from "../../components/atom/Spinner";
 
-const FinistGame = () => {
+const FinistGame = ({ coin }) => {
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="w-60 h-36 bg-yellow rounded-lg shadow-lg flex">END</div>
+      <div 	
+				className="w-60 h-36 bg-yellow rounded-lg shadow-lg flex justify-center items-center"
+		>
+				<h1 className="text-white font-bold text-4xl"> {coin} </h1>
+				<Button>
+					Lanjut
+				</Button>
+				<Button>Home</Button>
+				<Button>Ulang</Button>
+			</div>
     </div>
   );
 };
@@ -71,7 +80,7 @@ const Soal = () => {
   return (
     <Layout className="h-screen" title={`Games | Level ${level ? level : ""}`}>
       {isShowFinist ? (
-        <FinistGame />
+        <FinistGame coin={coin} />
       ) : (
         <>
           <Header isBack href="/games" />
