@@ -196,7 +196,7 @@
           "jawaban": "String"
         },
         {
-          "type": "s32",
+          "type": "s41",
           "soal": {
             "gambar": "String -> image-url",
             "pertanyaan": "String",

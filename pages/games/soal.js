@@ -10,6 +10,8 @@ import SesionSatuTiga from "../../components/molekul/Game/SesionSatuTiga";
 import SesionDuaSatu from "../../components/molekul/Game/SesionDuaSatu";
 import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
 import SesionDuaDua from "../../components/molekul/Game/SesionDuaDua";
+import SesionDuaTiga from "../../components/molekul/Game/SesionDuaTiga";
+import SesionTigaSatu from "../../components/molekul/Game/SesionTigaSatu";
 import firebase from "../../config/firebase";
 import Spinner from "../../components/atom/Spinner";
 
@@ -85,7 +87,7 @@ const FinistGame = ({ coin, reset, home }) => {
 };
 
 const Soal = () => {
-  const [currectQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [currentSoals, setCurrentSoals] = useState([]);
   const [coin, setCoin] = useState(0);
@@ -93,7 +95,6 @@ const Soal = () => {
   const [isWrong, setIsWrong] = useState(false);
   const [isShowFinist, setIsShowFinist] = useState(false);
   const level = useRouter().query.level;
-  // const router = useRouter();
 
   useEffect(() => {
     if (level)
@@ -124,7 +125,7 @@ const Soal = () => {
   };
 
   const handleNextQuestions = () => {
-    const nextQuestion = currectQuestion + 1;
+    const nextQuestion = currentQuestion + 1;
     if (nextQuestion < currentSoals.length) {
       setCurrentQuestion(nextQuestion);
       setIsWrong(false);
@@ -196,38 +197,53 @@ const Soal = () => {
 
               {isWrong && <PopupWrong handleClickNext={handleNextQuestions} />}
 
-              {currentSoals[currectQuestion].type == "s11" && (
+              {currentSoals[currentQuestion].type == "s11" && (
                 <SesionSatuSatu
-                  soal={currentSoals[currectQuestion].soal}
+                  soal={currentSoals[currentQuestion].soal}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currectQuestion].type == "s12" && (
+              {currentSoals[currentQuestion].type == "s12" && (
                 <SesionSatuDua
-                  soal={currentSoals[currectQuestion].soal}
+                  soal={currentSoals[currentQuestion].soal}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currectQuestion].type == "s13" && (
+              {currentSoals[currentQuestion].type == "s13" && (
                 <SesionSatuTiga
-                  soal={currentSoals[currectQuestion].soal}
+                  soal={currentSoals[currentQuestion].soal}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currectQuestion].type == "s21" && (
+              {currentSoals[currentQuestion].type == "s21" && (
                 <SesionDuaSatu
-                  question={currentSoals[currectQuestion]}
+                  question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currectQuestion].type == "s22" && (
+              {currentSoals[currentQuestion].type == "s22" && (
                 <SesionDuaDua
-                  question={currentSoals[currectQuestion]}
+                  question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
+                />
+              )}
+
+              {currentSoals[currentQuestion].type == "s23" && (
+                <SesionDuaTiga
+                  question={currentSoals[currentQuestion]}
+                  handleClickAnswer={handleClickAnswer}
+                />
+              )}
+
+              {currentSoals[currentQuestion].type == "s31" && (
+                <SesionTigaSatu
+                  question={currentSoals[currentQuestion]}
+                  handleClickAnswer={handleClickAnswer}
+                  handleNextQuestions={handleNextQuestions}
                 />
               )}
             </>
