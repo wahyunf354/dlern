@@ -5,7 +5,7 @@ import Fade from "react-reveal";
 
 function SesionSatuSatu({ soal, handleClickAnswer }) {
   const handleClick = (answer) => {
-    if (answer == soal.jawaban) {
+    if (answer.toUpperCase() == soal.jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);

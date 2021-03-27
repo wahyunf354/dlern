@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import InputText from "../../atom/InputText";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
@@ -8,7 +7,7 @@ function SesionSatuTiga({ soal, handleClickAnswer }) {
   const [answer, setAnswer] = useState([]);
 
   const handleClick = (answer) => {
-    if (answer == soal.jawaban) {
+    if (answer.toUpperCase() == soal.jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);

@@ -9,8 +9,6 @@ function SesionDuaSatu({ question, handleClickAnswer }) {
   const [answare, setAnsware] = useState("");
 
   const handleClick = (answer) => {
-    console.log(answer);
-    console.log(jawaban);
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {

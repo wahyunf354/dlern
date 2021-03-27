@@ -14,7 +14,7 @@ export default function Splas() {
   return (
     <Layout
       title="De'lern"
-      className="container h-screen w-screen flex justify-center items-center"
+      className="container mx-auto h-screen w-screen flex justify-center items-center"
     >
       <Image
         src="/assets/logo/logo.png"

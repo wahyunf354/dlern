@@ -4,7 +4,7 @@ import Button from "../../atom/Button";
 
 function SesionSatuSatu({ soal, handleClickAnswer }) {
   const handleClick = (answer) => {
-    if (answer.name == soal.jawaban) {
+    if (answer.name.toUpperCase() == soal.jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);

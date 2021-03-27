@@ -5,7 +5,7 @@ import Button from "../../atom/Button";
 const PopupCorrect = ({ handleClickNext }) => {
   return (
     <>
-      <div className="absolute inset-0 bg-gray-200 z-20 opacity-50"></div>
+      <div className="fixed inset-0 bg-gray-200 z-20 opacity-50"></div>
       <Fade bottom>
         <div className="p-5 md:18 flex justify-between items-center absolute text-blue-900 bg-tail-400 inset-x-0 bottom-0 bg-white h-36 rounded-lg m-4 z-50">
           <svg

@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
 
-function SesionDuaTiga({ question, handleClickAnswer }) {
+function SesionEmpatSatu({ question, handleClickAnswer }) {
   const { soal, jawaban } = question;
 
   const handleClick = (answer) => {
@@ -18,17 +18,19 @@ function SesionDuaTiga({ question, handleClickAnswer }) {
     <Fade>
       <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
         <h1 className="col-span-2 font-ligth text-lg text-gray-400 py-5">
-          Pilihlah arti yang benar!
+          {soal.pertanyaan}
         </h1>
-        <p className="text-xl ml-4 text-gray-600">"{soal.pertanyaan}"</p>
-        <div className="flex flex-col items-center flex-wrap mt-10">
+        <div>
+          <img src={soal.gambar} className="w-32" alt={soal.pertanyaan} />
+        </div>
+        <div className="mt-10">
           {soal.pilihan.map((e, i) => (
             <Button
               key={i}
               isPrimary
               hasShadow
               hasRounded
-              className="m-2"
+              className="m-2 w-full font-bold"
               onClick={() => handleClick(e)}
             >
               {e}
@@ -40,9 +42,9 @@ function SesionDuaTiga({ question, handleClickAnswer }) {
   );
 }
 
-SesionDuaTiga.propTypes = {
+SesionEmpatSatu.propTypes = {
   question: propTypes.object.isRequired,
   handleClickAnswer: propTypes.func,
 };
 
-export default SesionDuaTiga;
+export default SesionEmpatSatu;

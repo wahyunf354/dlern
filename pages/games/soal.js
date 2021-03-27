@@ -12,6 +12,8 @@ import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
 import SesionDuaDua from "../../components/molekul/Game/SesionDuaDua";
 import SesionDuaTiga from "../../components/molekul/Game/SesionDuaTiga";
 import SesionTigaSatu from "../../components/molekul/Game/SesionTigaSatu";
+import SesionTigaDua from "../../components/molekul/Game/SesionTigaDua";
+import SesionEmpatSatu from "../../components/molekul/Game/SesionEmpatSatu";
 import firebase from "../../config/firebase";
 import Spinner from "../../components/atom/Spinner";
 
@@ -244,6 +246,20 @@ const Soal = () => {
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                   handleNextQuestions={handleNextQuestions}
+                />
+              )}
+
+              {currentSoals[currentQuestion].type == "s32" && (
+                <SesionTigaDua
+                  question={currentSoals[currentQuestion]}
+                  handleClickAnswer={handleClickAnswer}
+                />
+              )}
+
+              {currentSoals[currentQuestion].type == "s41" && (
+                <SesionEmpatSatu
+                  question={currentSoals[currentQuestion]}
+                  handleClickAnswer={handleClickAnswer}
                 />
               )}
             </>
