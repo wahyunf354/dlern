@@ -96,14 +96,14 @@ const Soal = () => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
   const [isShowFinist, setIsShowFinist] = useState(false);
-  const level = useRouter().query.level;
+  const eps = useRouter().query.eps;
 
   useEffect(() => {
-    if (level)
+    if (eps)
       firebase
         .firestore()
         .collection("soals")
-        .where("level", "==", parseInt(level))
+        .where("eps", "==", parseInt(eps))
         .get()
         .then((result) => {
           result.forEach((doc) => {
@@ -115,7 +115,7 @@ const Soal = () => {
         .catch((err) => {
           console.log("error getting documents", err);
         });
-  }, [level]);
+  }, [eps]);
 
   const handleClickAnswer = (answer) => {
     if (answer) {
@@ -146,7 +146,7 @@ const Soal = () => {
     setIsWrong(false);
   };
 
-  const updateToFirebase = (koin, level) => {
+  const updateToFirebase = (koin, eps) => {
     return new Promise((resolve, reject) => {
       const user = firebase.auth().currentUser;
       if (user) {
@@ -158,7 +158,7 @@ const Soal = () => {
           .doc(uid)
           .update({
             koin,
-            level,
+            eps,
           })
           .then((result) => {
             resolve(result);
@@ -171,7 +171,7 @@ const Soal = () => {
   };
 
   const handleToGameHome = () => {
-    //    updateToFirebase(coin, level)
+    //    updateToFirebase(coin, eps)
     //      .then(() => {
     //        console.log("Success Add Data");
     //        router.push("/games");
@@ -181,7 +181,7 @@ const Soal = () => {
   };
 
   return (
-    <Layout className="h-screen" title={`Games | Level ${level ? level : ""}`}>
+    <Layout className="h-screen" title={`Games | eps ${eps ? eps : ""}`}>
       {isShowFinist ? (
         <FinistGame coin={coin} reset={resetCoin} home={handleToGameHome} />
       ) : (
