@@ -11,7 +11,7 @@ import SesionDuaSatu from "../../components/molekul/Game/SesionDuaSatu";
 import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
 import SesionDuaDua from "../../components/molekul/Game/SesionDuaDua";
 import SesionDuaTiga from "../../components/molekul/Game/SesionDuaTiga";
-import SesionTigaSatu from "../../components/molekul/Game/SesionTigaSatu";
+import SesionTigaSatu from "../../components/molekul/Game/SesionTIgaSatu";
 import SesionTigaDua from "../../components/molekul/Game/SesionTigaDua";
 import SesionEmpatSatu from "../../components/molekul/Game/SesionEmpatSatu";
 import firebase from "../../config/firebase";
@@ -103,7 +103,7 @@ const Soal = () => {
       firebase
         .firestore()
         .collection("soals")
-        .where("eps", "==", parseInt(eps))
+        .where("level", "==", parseInt(eps))
         .get()
         .then((result) => {
           result.forEach((doc) => {

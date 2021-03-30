@@ -1,5 +1,4 @@
 import Link from "next/link";
-//TODO: Mau buat Button dulu
 const Button = (props) => {
   const className = [props.className];
   if (props.isPrimary) className.push("btn-primary");

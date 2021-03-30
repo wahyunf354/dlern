@@ -1,7 +1,6 @@
-import React from "react";
-import Button from "../../components/atom/Button";
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
+import ColumnSesion from "../../components/molekul/Game/ColumnSesion";
 
 const data = {
   eps: {
@@ -40,55 +39,21 @@ const data = {
   sesionOrder: ["sesion-1", "sesion-2", "sesion-3", "sesion-4"],
 };
 
-const GameLink = ({ sesion, eps }) => {
-  return (
-    <Button
-      type="link"
-      href={`/games/soal?sesion=${sesion}&eps=${eps}`}
-      hasShadow
-      className={`flex ${
-        eps % 2 == 0 ? "justify-self-end" : "justify-self-start"
-      } justify-center text-green-900 border border-green-900 items-center text-3xl md:text-4xl font-bold border-2 border-white block rounded-full w-20 h-20 md:w-24 md:h-24`}
-    >
-      {eps}
-    </Button>
-  );
-};
-
-const Column = ({ eps, sesion }) => {
-  return (
-    <div className="border p-5 w-min rounded-lg mb-5">
-      <h3 className="text-gray-400 font-light text-4xl ">{sesion.title}</h3>
-      <div className="grid justify-items-stretch grid-cols-1 mx-auto w-72 py-5">
-        {sesion.epsId.map((epsId) => {
-          return (
-            <GameLink
-              key={eps[epsId].id}
-              sesion={sesion.content}
-              eps={eps[epsId].content}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
 function Games() {
   return (
     <Layout title="Games | De'lern">
       <Header isFull />
-      <main className="container flex flex-col items-center mx-auto pt-5 relative">
+      <div className="container flex flex-col items-center mx-auto pt-5 relative">
         {data.sesionOrder.map((sesion) => {
           return (
-            <Column
+            <ColumnSesion
               eps={data.eps}
               sesion={data.sesion[sesion]}
               key={data.sesion[sesion].id}
             />
           );
         })}
-      </main>
+      </div>
     </Layout>
   );
 }
