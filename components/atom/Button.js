@@ -19,6 +19,12 @@ const Button = (props) => {
         </span>
       );
     }
+
+    return (
+      <span className={className.join(" ")} style={props.style}>
+        {props.children}
+      </span>
+    );
   }
 
   if (props.type === "link") {

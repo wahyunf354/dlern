@@ -70,6 +70,9 @@ export default function Register() {
           uid: result.user.uid,
           hour: data.hour,
           days,
+          koin: 0,
+          sesion: 1,
+          eps: 1,
         });
       })
       .then(() => {

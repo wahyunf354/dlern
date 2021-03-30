@@ -1,6 +1,9 @@
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
 import ColumnSesion from "../../components/molekul/Game/ColumnSesion";
+import { useEffect, useState } from "react";
+import Spinner from "../../components/atom/Spinner";
+import firebase from "../../config/firebase";
 
 const data = {
   eps: {
@@ -40,20 +43,73 @@ const data = {
 };
 
 function Games() {
+  const [user, setUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            const {
+              name,
+              email,
+              uid,
+              hour,
+              days,
+              eps,
+              koin,
+              sesion,
+            } = doc.data();
+            setUser({
+              name,
+              email,
+              uid,
+              hour,
+              days,
+              eps,
+              koin,
+              sesion,
+            });
+            setIsLoading(false);
+          } else {
+            router.push("/login");
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
+          router.push("/login");
+        });
+      if (!user) router.push("/login");
+    });
+  });
+
   return (
     <Layout title="Games | De'lern">
       <Header isFull />
-      <div className="container flex flex-col items-center mx-auto pt-5 relative">
-        {data.sesionOrder.map((sesion) => {
-          return (
-            <ColumnSesion
-              eps={data.eps}
-              sesion={data.sesion[sesion]}
-              key={data.sesion[sesion].id}
-            />
-          );
-        })}
-      </div>
+      {isLoading ? (
+        <div className="container p-4 mx-auto">
+          <Spinner isCenter isGreen isMedium />
+        </div>
+      ) : (
+        <div className="container flex flex-col items-center mx-auto pt-5 relative">
+          {data.sesionOrder.map((sesion) => {
+            return (
+              <ColumnSesion
+                currentSesion={user.sesion}
+                currentEps={user.eps}
+                eps={data.eps}
+                sesion={data.sesion[sesion]}
+                key={data.sesion[sesion].id}
+              />
+            );
+          })}
+        </div>
+      )}
     </Layout>
   );
 }
