@@ -2,7 +2,7 @@ import Button from "../../atom/Button";
 import Spinner from "../../atom/Spinner";
 import PropTypes from "prop-types";
 
-const FinistGame = ({ coin, reset, home, isLoading, nextEps }) => {
+const FinistGame = ({ coin, reset, home, isLoading, handleNextEps }) => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="w-96 h-60 bg-yellow rounded-lg shadow-lg flex flex-col justify-center items-center">
@@ -56,8 +56,13 @@ const FinistGame = ({ coin, reset, home, isLoading, nextEps }) => {
                 />
               </svg>
             </Button>
-            {false && (
-              <Button className="bg-white p-2" hasShadow hasRounded>
+            {true && (
+              <Button
+                onClick={() => handleNextEps()}
+                className="bg-white p-2"
+                hasShadow
+                hasRounded
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -85,7 +90,7 @@ FinistGame.propTypes = {
   coin: PropTypes.number,
   reset: PropTypes.func,
   home: PropTypes.func,
-  nextEps: PropTypes.func,
+  handleNextEps: PropTypes.func,
   isLoading: PropTypes.bool,
 };
 

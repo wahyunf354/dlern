@@ -1,10 +1,11 @@
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
 import ColumnSesion from "../../components/molekul/Game/ColumnSesion";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Spinner from "../../components/atom/Spinner";
 import firebase from "../../config/firebase";
 import { useRouter } from "next/router";
+import HeaderContext from "../../contexts/HeaderContext";
 
 const data = {
   eps: {
@@ -44,8 +45,8 @@ const data = {
 };
 
 function Games() {
-  const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const { user, setUser } = useContext(HeaderContext);
   const router = useRouter();
 
   useEffect(() => {

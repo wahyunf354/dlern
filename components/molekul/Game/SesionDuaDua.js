@@ -41,8 +41,9 @@ function SesionDuaDua({ question, handleClickAnswer }) {
           {soal.pertanyaanJerman} ...
         </p>
         <div className="flex justify-center flex-wrap mt-10">
-          {soal.pilihan.map((e) => (
+          {soal.pilihan.map((e, index) => (
             <Button
+              key={index}
               isPrimary
               hasShadow
               hasRounded

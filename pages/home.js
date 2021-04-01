@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import firebase from "../config/firebase";
 import useRouter from "next/router";
 import Header from "../components/molekul/Header";
@@ -6,6 +6,7 @@ import Button from "../components/atom/Button";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import Spinner from "../components/atom/Spinner";
+import HeaderContext from "../contexts/HeaderContext";
 
 function ContentHome(props) {
   return (
@@ -47,8 +48,8 @@ function ContentHome(props) {
 
 function home() {
   const router = useRouter;
-  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const { user, setUser } = useContext(HeaderContext);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -59,13 +60,25 @@ function home() {
         .get()
         .then((doc) => {
           if (doc.exists) {
-            const { name, email, uid, hour, days } = doc.data();
+            const {
+              name,
+              email,
+              uid,
+              hour,
+              days,
+              eps,
+              koin,
+              sesion,
+            } = doc.data();
             setUser({
               name,
               email,
               uid,
               hour,
               days,
+              eps,
+              koin,
+              sesion,
             });
             setLoading(false);
           } else {

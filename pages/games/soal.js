@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
 import PopupCorrect from "../../components/molekul/Game/PopupCorrect";
 import PopupWrong from "../../components/molekul/Game/PopupWrong";
 import SesionSatuSatu from "../../components/molekul/Game/SesionSatuSatu";
-import Button from "../../components/atom/Button";
 import SesionSatuTiga from "../../components/molekul/Game/SesionSatuTiga";
 import SesionDuaSatu from "../../components/molekul/Game/SesionDuaSatu";
 import SesionSatuDua from "../../components/molekul/Game/SesionSatuDua";
@@ -17,6 +16,7 @@ import SesionEmpatSatu from "../../components/molekul/Game/SesionEmpatSatu";
 import firebase from "../../config/firebase";
 import Spinner from "../../components/atom/Spinner";
 import FinistGame from "../../components/molekul/Game/FinistGame";
+import HeaderContext from "../../contexts/HeaderContext";
 
 const Soal = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -29,8 +29,12 @@ const Soal = () => {
   const eps = useRouter().query.eps;
   const sesion = useRouter().query.sesion;
   const router = useRouter();
+  const { user } = useContext(HeaderContext);
 
   useEffect(() => {
+    if (user.name == null) {
+      router.push("/games");
+    }
     if (eps && sesion)
       firebase
         .firestore()
@@ -78,11 +82,15 @@ const Soal = () => {
     setIsWrong(false);
   };
 
-  const handleToGameHome = () => {
+  const handleToHome = () => {
     setIsLoading(true);
-    const user = firebase.auth().currentUser;
-    if (!user) router.push("/login");
-    const uid = user.uid;
+
+    const currentCoin = parseInt(user.koin);
+    console.log(user);
+    const currentUser = firebase.auth().currentUser;
+    if (!currentUser) router.push("/login");
+
+    const uid = currentUser.uid;
     const currentEps = parseInt(eps) < 5 ? parseInt(eps) + 1 : 1;
     const currentSesion =
       parseInt(eps) === 5 ? parseInt(sesion) + 1 : parseInt(sesion);
@@ -91,11 +99,12 @@ const Soal = () => {
       .collection("users")
       .doc(uid)
       .update({
-        koin: coin,
+        koin: currentCoin + coin,
         eps: currentEps,
         sesion: currentSesion,
       })
       .then(() => {
+        resetCoin();
         router.push("/games");
         setIsLoading(false);
       })
@@ -105,9 +114,38 @@ const Soal = () => {
       });
   };
 
-  // TODO: Membuat Fungsi ni
   const handleNextEps = () => {
-    console.log("Seharusnya ke next eps");
+    setIsLoading(true);
+
+    const currentCoin = parseInt(user.koin);
+    console.log(user);
+    const currentUser = firebase.auth().currentUser;
+    if (!currentUser) router.push("/login");
+
+    const uid = currentUser.uid;
+    const currentEps = parseInt(eps) < 5 ? parseInt(eps) + 1 : 1;
+    const currentSesion =
+      parseInt(eps) === 5 ? parseInt(sesion) + 1 : parseInt(sesion);
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(uid)
+      .update({
+        koin: currentCoin + coin,
+        eps: currentEps,
+        sesion: currentSesion,
+      })
+      .then(() => {
+        router.push(
+          `http://localhost:3000/games/soal?sesion=${currentSesion}&eps=${currentEps}`
+        );
+        resetCoin();
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -116,9 +154,9 @@ const Soal = () => {
         <FinistGame
           coin={coin}
           reset={resetCoin}
-          home={handleToGameHome}
+          home={handleToHome}
           isLoading={isLoading}
-          nextEps={handleNextEps}
+          handleNextEps={handleNextEps}
         />
       ) : (
         <>
