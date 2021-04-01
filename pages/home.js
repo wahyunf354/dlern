@@ -74,7 +74,8 @@ function home() {
         })
         .catch((error) => {
           console.log("Error getting document:", error);
-          router.push("/login");
+          alert("Maaf terjadi masalah ");
+          // router.push("/login");
         });
       if (!user) router.push("/login");
     });

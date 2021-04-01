@@ -3,12 +3,47 @@ import Image from "next/image";
 import Button from "../components/atom/Button.js";
 import { useState } from "react";
 import Header from "../components/molekul/Header.js";
+import InputText from "../components/atom/InputText";
+import firebase from "../config/firebase";
 
 function FromSaran() {
   const [isLoading, setIsLoading] = useState(false);
+  const [saran, setSaran] = useState({
+    email: "",
+    desc: "",
+  });
+
+  const onChange = (e) => {
+    setSaran({
+      ...saran,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onSubmitBtn = () => {
-    console.log("OK");
+    if (saran.email !== "" && saran.desc !== "") {
+      setIsLoading(true);
+      console.log(saran);
+      firebase
+        .firestore()
+        .collection("saran")
+        .add(saran)
+        .then((result) => {
+          console.log("Document written with ID: ", result.id);
+          setSaran({
+            email: "",
+            desc: "",
+          });
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.error("Error adding document: ", err);
+          alert("Maaf Terjadi Masalah");
+          setIsLoading(false);
+        });
+    } else {
+      alert("Email dan sarannya kosong");
+    }
   };
 
   return (
@@ -16,21 +51,29 @@ function FromSaran() {
       <label className="mb-2 font-bold text-gray-800 text-xl">
         Email <span className="text-red-500">*</span>
       </label>
-      <input
-        name="email"
+      <InputText
+        id="email"
         type="email"
         placeholder="Masukan Email"
-        className="input"
+        errorResponse="Maaf email tidak valid"
+        outerClassName="w-full mb-2"
+        inputClassName="w-full"
+        name="email"
+        value={saran.email}
+        onChange={onChange}
       />
       <label className="mb-2 font-bold text-gray-800 text-xl">
         Saran dan Masukan <span className="text-red-500">*</span>
       </label>
       <textarea
-        name="saran"
-        id="saran"
+        name="desc"
+        id="desc"
         cols="30"
         rows="10"
-        className="input"
+        className="input mb-5"
+        value={saran.desc}
+        onChange={onChange}
+        placeholder="Masukan saran anda..."
       ></textarea>
 
       <Button

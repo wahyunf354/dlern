@@ -4,6 +4,7 @@ import ColumnSesion from "../../components/molekul/Game/ColumnSesion";
 import { useEffect, useState } from "react";
 import Spinner from "../../components/atom/Spinner";
 import firebase from "../../config/firebase";
+import { useRouter } from "next/router";
 
 const data = {
   eps: {
@@ -45,6 +46,7 @@ const data = {
 function Games() {
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -82,7 +84,8 @@ function Games() {
         })
         .catch((error) => {
           console.log("Error getting document:", error);
-          router.push("/login");
+          alert("Maaf terjadi masalah : ", error);
+          router.push("/welcome");
         });
       if (!user) router.push("/login");
     });

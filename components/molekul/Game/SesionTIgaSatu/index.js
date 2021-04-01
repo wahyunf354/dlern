@@ -51,6 +51,7 @@ function SesionDuaDua({ question, handleClickAnswer, handleNextQuestions }) {
   const [dataSoal, setDataSoal] = useState(soal);
   const [data, setData] = useState(feckSoal);
 
+  // TODO: Melanjutkan function ketika user banar pada soal ni
   const handleClick = () => {
     handleNextQuestions();
   };
