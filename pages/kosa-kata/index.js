@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../components/atom/Button";
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
+import TabBar from "../../components/molekul/TabBar";
 
 const index = () => {
   return (
@@ -54,6 +55,7 @@ const index = () => {
           Preposisi
         </Button>
       </main>
+      <TabBar />
     </Layout>
   );
 };

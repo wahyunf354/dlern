@@ -6,6 +6,7 @@ import Spinner from "../../components/atom/Spinner";
 import firebase from "../../config/firebase";
 import { useRouter } from "next/router";
 import HeaderContext from "../../contexts/HeaderContext";
+import TabBar from "../../components/molekul/TabBar";
 
 const data = {
   eps: {
@@ -100,7 +101,7 @@ function Games() {
           <Spinner isCenter isGreen isMedium />
         </div>
       ) : (
-        <div className="container flex flex-col items-center mx-auto pt-5 relative">
+        <div className=" flex flex-col items-center pt-5 relative container mx-auto">
           {data.sesionOrder.map((sesion) => {
             return (
               <ColumnSesion
@@ -114,6 +115,7 @@ function Games() {
           })}
         </div>
       )}
+      <TabBar />
     </Layout>
   );
 }

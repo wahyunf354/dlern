@@ -7,42 +7,41 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import Spinner from "../components/atom/Spinner";
 import HeaderContext from "../contexts/HeaderContext";
+import TabBar from "../components/molekul/TabBar";
 
 function ContentHome(props) {
   return (
-    <>
-      <div className="container relative md:px-36 px-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-10 pt-10">
-        <div className="md:col-span-2">
-          <h1 className="text-blue-900 text-2xl font-bold">
-            Hai, {props.nameUser}
-          </h1>
-        </div>
-        <Button
-          className="py-4 border-1"
-          href="/kosa-kata"
-          type="link"
-          hasShadow
-          hasRounded
-        >
-          <Image
-            src="/assets/illustrasi/kosa-kata.png"
-            width={200}
-            height={140}
-            layout="responsive"
-          />
-          <h2 className="hover:text-gray-500">Kosa Kata</h2>
-        </Button>
-        <Button className="py-4" hasShadow hasRounded href="/games" type="link">
-          <Image
-            src="/assets/illustrasi/game.png"
-            width={200}
-            height={140}
-            layout="responsive"
-          />
-          <h2 className="hover:text-gray-500">Ayo Belajar</h2>
-        </Button>
+    <div className="container mb-16 relative md:px-36 px-5 mx-auto grid md:grid-cols-2 grid-cols-1 gap-10 pt-10">
+      <div className="md:col-span-2">
+        <h1 className="text-blue-900 text-2xl font-bold">
+          Hai, {props.nameUser}
+        </h1>
       </div>
-    </>
+      <Button
+        className="py-4 border-1"
+        href="/kosa-kata"
+        type="link"
+        hasShadow
+        hasRounded
+      >
+        <Image
+          src="/assets/illustrasi/kosa-kata.png"
+          width={200}
+          height={140}
+          layout="responsive"
+        />
+        <h2 className="hover:text-gray-500">Kosa Kata</h2>
+      </Button>
+      <Button className="py-4" hasShadow hasRounded href="/games" type="link">
+        <Image
+          src="/assets/illustrasi/game.png"
+          width={200}
+          height={140}
+          layout="responsive"
+        />
+        <h2 className="hover:text-gray-500">Ayo Belajar</h2>
+      </Button>
+    </div>
   );
 }
 
@@ -82,7 +81,7 @@ function home() {
             });
             setLoading(false);
           } else {
-            router.push("/login");
+            alert("Maaf terjadi masalah ");
           }
         })
         .catch((error) => {
@@ -102,7 +101,10 @@ function home() {
           <Spinner isCenter isGreen isMedium />
         </div>
       ) : (
-        <ContentHome nameUser={user.name} />
+        <div className="relative">
+          <ContentHome nameUser={user.name} />
+          <TabBar />
+        </div>
       )}
     </Layout>
   );
