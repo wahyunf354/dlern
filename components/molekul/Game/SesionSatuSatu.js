@@ -11,11 +11,13 @@ function SesionSatuSatu({ soal, handleClickAnswer }) {
     }
   };
   return (
-    <main className="container lg:w-1/2 lg:px-28 mx-auto grid md:justify-items-center grid-cols-2 p-5 gap-3 relative">
-      <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
+    <main className="container lg:w-1/2 mx-auto grid md:justify-items-center md:grid-cols-3 grid-cols-2 p-5 gap-3 relative">
+      <h1 className="md:col-span-3 col-span-2 self-start text-xl py-5">
+        {soal.pertanyaan}
+      </h1>
       {soal.pilihan.map((answer, i) => (
         <Button
-          className="p-2 border lg:w-60 md:w-30"
+          className="p-2 border"
           key={i}
           hasRounded
           hasShadow
