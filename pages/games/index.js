@@ -7,43 +7,7 @@ import firebase from "../../config/firebase";
 import { useRouter } from "next/router";
 import HeaderContext from "../../contexts/HeaderContext";
 import TabBar from "../../components/molekul/TabBar";
-
-const data = {
-  eps: {
-    "eps-1": { id: "eps-1", content: "1" },
-    "eps-2": { id: "eps-2", content: "2" },
-    "eps-3": { id: "eps-3", content: "3" },
-    "eps-4": { id: "eps-4", content: "4" },
-    "eps-5": { id: "eps-5", content: "5" },
-  },
-  sesion: {
-    "sesion-1": {
-      id: "sesion-1",
-      title: "Sesion 1",
-      content: "1",
-      epsId: ["eps-1", "eps-2", "eps-3", "eps-4", "eps-5"],
-    },
-    "sesion-2": {
-      id: "sesion-2",
-      title: "Sesion 2",
-      content: "2",
-      epsId: ["eps-1", "eps-2", "eps-3", "eps-4", "eps-5"],
-    },
-    "sesion-3": {
-      id: "sesion-3",
-      title: "Sesion 3",
-      content: "3",
-      epsId: ["eps-1", "eps-2", "eps-3", "eps-4", "eps-5"],
-    },
-    "sesion-4": {
-      id: "sesion-4",
-      title: "Sesion 4",
-      content: "4",
-      epsId: ["eps-1", "eps-2", "eps-3", "eps-4", "eps-5"],
-    },
-  },
-  sesionOrder: ["sesion-1", "sesion-2", "sesion-3", "sesion-4"],
-};
+import GameLink from "../../components/molekul/Game/GameLink";
 
 function Games() {
   const [isLoading, setIsLoading] = useState(true);
@@ -101,18 +65,12 @@ function Games() {
           <Spinner isCenter isGreen isMedium />
         </div>
       ) : (
-        <div className=" flex flex-col items-center pt-5 relative container mx-auto">
-          {data.sesionOrder.map((sesion) => {
-            return (
-              <ColumnSesion
-                currentSesion={user.sesion}
-                currentEps={user.eps}
-                eps={data.eps}
-                sesion={data.sesion[sesion]}
-                key={data.sesion[sesion].id}
-              />
-            );
-          })}
+        <div className="grid justify-items-stretch grid-cols-1 mx-auto w-72 py-5 mx-auto">
+          <GameLink epsId={1} currentEps={user.eps} />
+          <GameLink epsId={2} currentEps={user.eps} />
+          <GameLink epsId={3} currentEps={user.eps} />
+          <GameLink epsId={4} currentEps={user.eps} />
+          <GameLink epsId={5} currentEps={user.eps} />
         </div>
       )}
       <TabBar />

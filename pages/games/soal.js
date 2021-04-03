@@ -27,7 +27,6 @@ const Soal = () => {
   const [isWrong, setIsWrong] = useState(false);
   const [isShowFinist, setIsShowFinist] = useState(false);
   const eps = useRouter().query.eps;
-  const sesion = useRouter().query.sesion;
   const router = useRouter();
   const { user } = useContext(HeaderContext);
 
@@ -35,12 +34,11 @@ const Soal = () => {
     if (user.name == null) {
       router.push("/games");
     }
-    if (eps && sesion)
+    if (eps)
       firebase
         .firestore()
         .collection("soals")
         .where("eps", "==", parseInt(eps))
-        .where("sesion", "==", parseInt(sesion))
         .get()
         .then((result) => {
           result.forEach((doc) => {
@@ -91,9 +89,7 @@ const Soal = () => {
     if (!currentUser) router.push("/login");
 
     const uid = currentUser.uid;
-    const currentEps = parseInt(eps) < 5 ? parseInt(eps) + 1 : 1;
-    const currentSesion =
-      parseInt(eps) === 5 ? parseInt(sesion) + 1 : parseInt(sesion);
+    const currentEps = parseInt(eps) + 1;
     firebase
       .firestore()
       .collection("users")
@@ -101,7 +97,6 @@ const Soal = () => {
       .update({
         koin: currentCoin + coin,
         eps: currentEps,
-        sesion: currentSesion,
       })
       .then(() => {
         resetCoin();
@@ -123,9 +118,7 @@ const Soal = () => {
     if (!currentUser) router.push("/login");
 
     const uid = currentUser.uid;
-    const currentEps = parseInt(eps) < 5 ? parseInt(eps) + 1 : 1;
-    const currentSesion =
-      parseInt(eps) === 5 ? parseInt(sesion) + 1 : parseInt(sesion);
+    const currentEps = parseInt(eps) + 1;
     firebase
       .firestore()
       .collection("users")
@@ -133,12 +126,9 @@ const Soal = () => {
       .update({
         koin: currentCoin + coin,
         eps: currentEps,
-        sesion: currentSesion,
       })
       .then(() => {
-        router.push(
-          `http://localhost:3000/games/soal?sesion=${currentSesion}&eps=${currentEps}`
-        );
+        router.push(`http://localhost:3000/games/soal?eps=${currentEps}`);
         resetCoin();
         setIsLoading(false);
       })
