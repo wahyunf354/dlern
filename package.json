@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mobiscroll/react": "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.1.1.tgz",
     "@react-firebase/auth": "^0.2.10",
     "firebase": "^8.2.10",
     "firebase-admin": "^9.5.0",

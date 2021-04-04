@@ -65,12 +65,16 @@ function Games() {
           <Spinner isCenter isGreen isMedium />
         </div>
       ) : (
-        <div className="grid justify-items-stretch grid-cols-1 mx-auto w-72 py-5 mx-auto">
+        <div className="grid pb-16 justify-items-stretch grid-cols-1 mx-auto w-72 py-5 mx-auto">
+          <h3 className="font-light text-4xl text-green-900 mb-5">Episode</h3>
           <GameLink epsId={1} currentEps={user.eps} />
           <GameLink epsId={2} currentEps={user.eps} />
           <GameLink epsId={3} currentEps={user.eps} />
           <GameLink epsId={4} currentEps={user.eps} />
           <GameLink epsId={5} currentEps={user.eps} />
+          <GameLink epsId={6} currentEps={user.eps} />
+          <GameLink epsId={7} currentEps={user.eps} />
+          <GameLink epsId={8} currentEps={user.eps} />
         </div>
       )}
       <TabBar />

@@ -1,34 +1,39 @@
-import React from "react";
-import TimeField from "react-simple-timefield";
+import React, { useState } from "react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import { Datepicker, Page, setOptions } from "@mobiscroll/react";
+
+setOptions({
+  theme: "material",
+  themeVariant: "light",
+});
 
 function Hour({ onChange, value }) {
-  const handleChange = (event, time) => {
+  const handleChange = (event) => {
+    console.log(event.valueText);
     const target = {
       target: {
         name: "hour",
-        value: time,
+        value: event.valueText,
       },
     };
-
     onChange(target);
   };
   return (
-    <>
-      <div className="flex flex-col justify-center items-center h-3/4 mb-24">
-        <TimeField
-          value={value.hour}
-          onChange={handleChange}
-          style={{
-            border: "3px solid #F05A20",
-            fontSize: 50,
-            width: 145,
-            padding: "5px 8px",
-            color: "#999",
-            borderRadius: 4,
-          }}
-        />
-      </div>
-    </>
+    <div className=" flex flex-col justify-center items-center h-3/4 mb-5">
+      <Datepicker
+        controls={["time"]}
+        timeFormat="HH:mm"
+        onChange={handleChange}
+        display="inline"
+        value={value}
+        inputProps={{
+          label: "24 hour picker",
+          labelStyle: "stacked",
+          inputStyle: "outline",
+          placeholder: "Please Select...",
+        }}
+      />
+    </div>
   );
 }
 

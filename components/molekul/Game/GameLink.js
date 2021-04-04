@@ -1,7 +1,7 @@
 import Button from "../../atom/Button";
 import propTypes from "prop-types";
 
-const GameLink = ({ sesionContent, epsId, currentEps, currentSesion }) => {
+const GameLink = ({ epsId, currentEps }) => {
   return (
     <Button
       type="link"
@@ -22,8 +22,8 @@ const GameLink = ({ sesionContent, epsId, currentEps, currentSesion }) => {
 };
 
 GameLink.propTypes = {
-  sesionContent: propTypes.string.isRequired,
-  epsId: propTypes.string.isRequired,
+  currentEps: propTypes.number.isRequired,
+  epsId: propTypes.number.isRequired,
 };
 
 export default GameLink;
