@@ -34,7 +34,7 @@ function Proposisi() {
   return (
     <Layout title="Proposisi">
       <Header isBack href="/kosa-kata" />
-      <main className="container mt-5 mx-auto px-5 md:px-24 grid grid-cols-2 md:grid-cols-6 gap-4 mb-20">
+      <main className="container mt-5 mx-auto px-5 grid grid-cols-2 md:grid-cols-6 gap-4 mb-20">
         <h1 className="col-span-2 md:col-span-6 text-4xl font-bold text-green-900">
           Präpositionen
         </h1>

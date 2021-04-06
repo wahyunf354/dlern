@@ -14,7 +14,7 @@ const KataBenda = () => {
   const onChange = (e) => {
     console.log(e.target.value);
   };
-
+  // TODO: Menampilkan data atau mungkin tambah halaman kategori
   useEffect(async () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) router.push("/login");
