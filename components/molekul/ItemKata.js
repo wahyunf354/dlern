@@ -10,7 +10,7 @@ const ItemKata = ({ jerman, indo, img, sound, type }) => {
   if (type === "WITH_IMG")
     return (
       <Button onClick={playSound} className="p-2 border" hasRounded hasShadow>
-        <div className="h-24 bg-gray-500 overflow-hidden rounded">
+        <div className="bg-gray-500 p-2 overflow-hidden rounded">
           <img src={img} alt={jerman} />
         </div>
         <h2 className="font-bold text-sm mt-2">{jerman}</h2>
