@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import firebase from "../config/firebase";
-import useRouter from "next/router";
+import { useRouter } from "next/router";
 import Header from "../components/molekul/Header";
 import Button from "../components/atom/Button";
 import Image from "next/image";
@@ -46,7 +46,7 @@ function ContentHome(props) {
 }
 
 function home() {
-  const router = useRouter;
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useContext(HeaderContext);
 
@@ -87,7 +87,7 @@ function home() {
         .catch((error) => {
           console.log("Error getting document:", error);
           alert("Maaf terjadi masalah ");
-          // router.push("/login");
+          router.push("/login");
         });
       if (!user) router.push("/login");
     });

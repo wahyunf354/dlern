@@ -1,13 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
 import ItemKata from "../../components/molekul/ItemKata";
 import InputText from "../../components/atom/InputText";
+import HeaderContext from "../../contexts/HeaderContext";
+import { useRouter } from "next/router";
+import firebase from "../../config/firebase";
 
 const KataBenda = () => {
+  const [state, setState] = useState(null);
+  const { baseUrlAPI } = useContext(HeaderContext);
+  const router = useRouter();
   const onChange = (e) => {
     console.log(e.target.value);
   };
+
+  useEffect(async () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) router.push("/login");
+    });
+    fetch(`${baseUrlAPI}api/vocab/kata_benda/minuman`)
+      .then((res) => res.json())
+      .then((result) => {
+        const result1 = Object.entries(result);
+        const data = Object.entries(result1[0][1])[0][1];
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  });
+
   return (
     <Layout title="Kata Benda | De'lern">
       <Header isBack href="/kosa-kata" />
@@ -27,7 +48,7 @@ const KataBenda = () => {
         <ItemKata
           jerman="Jerman"
           indo="Indo"
-          img="https://placeimg.com/640/480/any"
+          img="https://dlern-rest.000webhostapp.com/assets/vocab/gambar/negara/Italien.png"
           sound="/assets/sound/an.mp4"
           type="WITH_IMG"
         />
