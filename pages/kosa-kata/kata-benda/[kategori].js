@@ -15,6 +15,8 @@ const Negara = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
+  const [isShowSearch, setIsShowSearch] = useState(false);
+  const [resultSearch, setResultSearch] = useState(null);
 
   useEffect(async () => {
     try {
@@ -32,10 +34,17 @@ const Negara = () => {
 
   const onChange = (e) => {
     setSearch(e.target.value);
+    console.log(search);
     const resultSearch = data.filter(
-      (e) => e.jerman === search || e.indo === search
+      (e) =>
+        e.jerman.toLowerCase().includes(search.toLowerCase()) ||
+        e.indo.toLowerCase().includes(search.toLowerCase())
     );
-    // TODO: MEMBUAT FUNGSI SEARCH
+    setResultSearch(resultSearch);
+    setIsShowSearch(true);
+    if (search === "") {
+      setIsShowSearch(false);
+    }
   };
 
   return (
@@ -63,19 +72,33 @@ const Negara = () => {
             </div>
           ) : (
             <div className="grid mb-20 md:grid-cols-5 grid-cols-2 gap-4 mx-2">
-              {data.map((item, i) => (
-                <ItemKata
-                  jerman={item.jerman}
-                  indo={item.indo}
-                  img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
-                    kategori === "obat"
-                      ? `${kategori}/medikament-obat`
-                      : kategori
-                  }/${item.url_gambar}`}
-                  sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${kategori}/${item.url_voice}`}
-                  type="WITH_IMG"
-                />
-              ))}
+              {!isShowSearch
+                ? data.map((item, i) => (
+                    <ItemKata
+                      jerman={item.jerman}
+                      indo={item.indo}
+                      img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
+                        kategori === "obat"
+                          ? `${kategori}/medikament-obat`
+                          : kategori
+                      }/${item.url_gambar}`}
+                      sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${kategori}/${item.url_voice}`}
+                      type="WITH_IMG"
+                    />
+                  ))
+                : resultSearch.map((item, i) => (
+                    <ItemKata
+                      jerman={item.jerman}
+                      indo={item.indo}
+                      img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
+                        kategori === "obat"
+                          ? `${kategori}/medikament-obat`
+                          : kategori
+                      }/${item.url_gambar}`}
+                      sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${kategori}/${item.url_voice}`}
+                      type="WITH_IMG"
+                    />
+                  ))}
             </div>
           )}
         </div>
