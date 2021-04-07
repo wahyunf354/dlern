@@ -18,6 +18,17 @@ import Spinner from "../../components/atom/Spinner";
 import FinistGame from "../../components/molekul/Game/FinistGame";
 import HeaderContext from "../../contexts/HeaderContext";
 
+const sesion = {
+  1: { eps: "1", sesion: "1" },
+  2: { eps: "2", sesion: "1" },
+  3: { eps: "3", sesion: "1" },
+  4: { eps: "4", sesion: "1" },
+  5: { eps: "5", sesion: "1" },
+  6: { eps: "1", sesion: "2" },
+  7: { eps: "2", sesion: "2" },
+  8: { eps: "3", sesion: "2" },
+};
+
 const Soal = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,28 +39,22 @@ const Soal = () => {
   const [isShowFinist, setIsShowFinist] = useState(false);
   const eps = useRouter().query.eps;
   const router = useRouter();
-  const { user } = useContext(HeaderContext);
+  const { user, baseUrlAPI } = useContext(HeaderContext);
 
   useEffect(() => {
     if (user.name == null) {
       router.push("/games");
     }
-    if (eps)
-      firebase
-        .firestore()
-        .collection("soals")
-        .where("eps", "==", parseInt(eps))
-        .get()
+    if (eps) {
+      fetch(`${baseUrlAPI}api/game/${sesion[eps].sesion}/${sesion[eps].eps}`)
+        .then((res) => res.json())
         .then((result) => {
-          result.forEach((doc) => {
-            console.log(doc.data());
-            setCurrentSoals(doc.data().soals);
-          });
+          console.log(result);
+          setCurrentSoals(result);
           setIsLoading(false);
         })
-        .catch((err) => {
-          console.log("error getting documents", err);
-        });
+        .catch((err) => console.log(err));
+    }
   }, [eps]);
 
   const handleClickAnswer = (answer) => {
@@ -163,45 +168,45 @@ const Soal = () => {
 
               {isWrong && <PopupWrong handleClickNext={handleNextQuestions} />}
 
-              {currentSoals[currentQuestion].type == "s11" && (
+              {currentSoals[currentQuestion].type_soal == "s11" && (
                 <SesionSatuSatu
-                  soal={currentSoals[currentQuestion].soal}
+                  question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
-              {currentSoals[currentQuestion].type == "s12" && (
+              {currentSoals[currentQuestion].type_soal == "s12" && (
                 <SesionSatuDua
-                  soal={currentSoals[currentQuestion].soal}
+                  question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
-              {currentSoals[currentQuestion].type == "s13" && (
+              {currentSoals[currentQuestion].type_soal == "s13" && (
                 <SesionSatuTiga
-                  soal={currentSoals[currentQuestion].soal}
+                  question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
-              {currentSoals[currentQuestion].type == "s21" && (
+              {currentSoals[currentQuestion].type_soal == "s21" && (
                 <SesionDuaSatu
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
-              {currentSoals[currentQuestion].type == "s22" && (
+              {currentSoals[currentQuestion].type_soal == "s22" && (
                 <SesionDuaDua
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currentQuestion].type == "s23" && (
+              {currentSoals[currentQuestion].type_soal == "s23" && (
                 <SesionDuaTiga
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currentQuestion].type == "s31" && (
+              {currentSoals[currentQuestion].type_soal == "s31" && (
                 <SesionTigaSatu
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
@@ -209,14 +214,14 @@ const Soal = () => {
                 />
               )}
 
-              {currentSoals[currentQuestion].type == "s32" && (
+              {currentSoals[currentQuestion].type_soal == "s32" && (
                 <SesionTigaDua
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
                 />
               )}
 
-              {currentSoals[currentQuestion].type == "s41" && (
+              {currentSoals[currentQuestion].type_soal == "s41" && (
                 <SesionEmpatSatu
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}

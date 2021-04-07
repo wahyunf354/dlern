@@ -3,11 +3,12 @@ import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
 
-function SesionSatuTiga({ soal, handleClickAnswer }) {
+function SesionSatuTiga({ question, handleClickAnswer }) {
+  const { soal, jawaban } = question;
   const [answer, setAnswer] = useState([]);
 
   const handleClick = (answer) => {
-    if (answer.toUpperCase() == soal.jawaban.toUpperCase()) {
+    if (answer.toUpperCase() == jawaban.join(" ").toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);
