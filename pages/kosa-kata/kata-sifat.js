@@ -18,7 +18,7 @@ function KataSifat() {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) router.push("/login");
     });
-    fetch(`${baseUrlAPI}api/vocab/kata_sifat`)
+    fetch(`${baseUrlAPI}/api/vocab/kata_sifat`)
       .then((res) => res.json())
       .then((result) => {
         const result1 = Object.entries(result);

@@ -22,16 +22,16 @@ function SesionDuaTiga({ question, handleClickAnswer }) {
         </h1>
         <p className="text-xl ml-4 text-gray-600">"{soal.pertanyaan}"</p>
         <div className="flex flex-col items-center flex-wrap mt-10">
-          {soal.pilihan.map((e, i) => (
+          {Object.entries(soal.pilihan).map((e, i) => (
             <Button
               key={i}
               isPrimary
               hasShadow
               hasRounded
               className="m-2"
-              onClick={() => handleClick(e)}
+              onClick={() => handleClick(e[0])}
             >
-              {e}
+              {e[1]}
             </Button>
           ))}
         </div>

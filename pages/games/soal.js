@@ -22,11 +22,15 @@ const sesion = {
   1: { eps: "1", sesion: "1" },
   2: { eps: "2", sesion: "1" },
   3: { eps: "3", sesion: "1" },
-  4: { eps: "4", sesion: "1" },
-  5: { eps: "5", sesion: "1" },
-  6: { eps: "1", sesion: "2" },
-  7: { eps: "2", sesion: "2" },
-  8: { eps: "3", sesion: "2" },
+  4: { eps: "1", sesion: "2" },
+  5: { eps: "2", sesion: "2" },
+  6: { eps: "3", sesion: "2" },
+  7: { eps: "1", sesion: "3" },
+  8: { eps: "2", sesion: "3" },
+  9: { eps: "3", sesion: "3" },
+  10: { eps: "1", sesion: "4" },
+  11: { eps: "2", sesion: "4" },
+  12: { eps: "3", sesion: "4" },
 };
 
 const Soal = () => {
@@ -46,7 +50,7 @@ const Soal = () => {
       router.push("/games");
     }
     if (eps) {
-      fetch(`${baseUrlAPI}api/game/${sesion[eps].sesion}/${sesion[eps].eps}`)
+      fetch(`${baseUrlAPI}/api/game/${sesion[eps].sesion}/${sesion[eps].eps}`)
         .then((res) => res.json())
         .then((result) => {
           console.log(result);

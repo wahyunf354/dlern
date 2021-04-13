@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Fade from "react-reveal/Fade";
+import HeaderContext from "../../../contexts/HeaderContext";
 import Button from "../../atom/Button";
 
 const SesionTigaDua = ({ question, handleClickAnswer }) => {
   const { soal, jawaban } = question;
   const [answer, setAnswer] = useState([]);
+  const { baseUrlAPI } = useContext(HeaderContext);
 
   const handleClick = (answer) => {
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
@@ -43,7 +45,7 @@ const SesionTigaDua = ({ question, handleClickAnswer }) => {
           Susun hingga menjadi kata yang sempurna!
         </h1>
         <div className="flex items-center">
-          <Button onClick={() => playAudio(soal.voice)}>
+          <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
             <img
               src="/assets/icons/speaker.svg"
               className="w-12 h-12 text-yellow"
@@ -71,9 +73,10 @@ const SesionTigaDua = ({ question, handleClickAnswer }) => {
             </Button>
           ))}
         </div>
-
+        {/* TODO: Terdapat masalah ketika menjawab benar */}
         <div className="text-center h-44 md:h-28 md:w-1/2 w-full">
           {soal.huruf.map((choice, i) => {
+            if (choice === "") return;
             return (
               <Button
                 isSecondary

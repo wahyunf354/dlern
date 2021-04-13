@@ -28,7 +28,7 @@ function Menu({ toggleShowMenu }) {
         <div className="h-screen w-3/4 md:w-1/4 z-20 px-5 py-5 flex flex-col items-stretch absolute top-0 left-0 bg-white">
           <Button onClick={toggleShowMenu} className="self-end">
             <svg
-              className="h-6 w-6 text-gray-500"
+              className="h-8 w-8 text-gray-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -85,8 +85,8 @@ function Header(props) {
         <Image
           src="/assets/logo/logo.png"
           alt="De'lern"
-          width={50}
-          height={50}
+          width={60}
+          height={60}
         />
       </nav>
     );
@@ -101,7 +101,7 @@ function Header(props) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="h-6 w-6 text-gray-500"
+            className="h-8 w-8 text-gray-500"
           >
             <path
               strokeLinecap="round"
@@ -119,9 +119,9 @@ function Header(props) {
         >
           <Image
             src="/assets/logo/logo.png"
-            alt="De'lern"
-            width={36}
-            height={36}
+            alt="D'lern"
+            width={48}
+            height={48}
           />
         </Button>
       </header>
@@ -137,7 +137,7 @@ function Header(props) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="h-6 w-6 text-gray-500"
+            className="h-8 w-8 text-gray-500"
           >
             <path
               strokeLinecap="round"
@@ -154,9 +154,9 @@ function Header(props) {
         >
           <Image
             src="/assets/logo/logo.png"
-            alt="De'lern"
-            width={36}
-            height={36}
+            alt="D'lern"
+            width={48}
+            height={48}
           />
         </Button>
       </header>
@@ -170,7 +170,7 @@ function Header(props) {
         href="index"
         className="text-2xl font-bold text-yellow"
       >
-        De'lern
+        D'lern
       </Button>
     </header>
   );

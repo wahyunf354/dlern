@@ -8,7 +8,7 @@ const index = () => {
   return (
     <Layout title="Kosa Kata | De'lern">
       <Header isFull />
-      <main className="container mx-auto pt-5 px-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+      <main className="container mx-auto md:w-1/2 pt-20 px-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <Button
           type="link"
           href="/kosa-kata/kata-benda"
@@ -53,6 +53,15 @@ const index = () => {
           hasRounded
         >
           Preposisi
+        </Button>
+        <Button
+          type="link"
+          href="/kosa-kata/kata-keterangan"
+          isPrimary
+          hasShadow
+          hasRounded
+        >
+          Kata Keterangan
         </Button>
       </main>
       <TabBar />

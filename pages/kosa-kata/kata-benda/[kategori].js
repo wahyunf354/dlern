@@ -20,7 +20,7 @@ const Negara = () => {
 
   useEffect(async () => {
     try {
-      const res = await fetch(`${baseUrlAPI}api/vocab/kata_benda/${kategori}`);
+      const res = await fetch(`${baseUrlAPI}/api/vocab/kata_benda/${kategori}`);
       const result = await res.json();
       const result1 = Object.entries(result);
       const data = Object.entries(result1[0][1])[0][1];

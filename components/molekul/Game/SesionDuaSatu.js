@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
 import InputText from "../../../components/atom/InputText";
+import HeaderContext from "../../../contexts/HeaderContext";
 
 function SesionDuaSatu({ question, handleClickAnswer }) {
   const { soal, jawaban } = question;
   const [answare, setAnsware] = useState("");
+  const { baseUrlAPI } = useContext(HeaderContext);
 
   const handleClick = (answer) => {
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
+      setAnsware("");
     } else {
       handleClickAnswer(false);
+      setAnsware("");
     }
   };
 
@@ -26,7 +30,7 @@ function SesionDuaSatu({ question, handleClickAnswer }) {
     <Fade>
       <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
         <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
-        <Button onClick={() => playAudio(soal.voice)}>
+        <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
           <img
             src="/assets/icons/speaker.svg"
             className="w-30 h-30 text-yellow"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 const Button = (props) => {
   const className = [props.className];
+  className.push("focus:outline-none");
   if (props.isPrimary) className.push("btn-primary");
   if (props.isSecondary) className.push("btn-secondary");
   if (props.hasRounded) className.push("rounded-lg");

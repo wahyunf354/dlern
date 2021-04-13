@@ -18,7 +18,7 @@ function Konjungsi() {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) router.push("/login");
     });
-    fetch(`${baseUrlAPI}api/vocab/konjungsi`)
+    fetch(`${baseUrlAPI}/api/vocab/konjungsi`)
       .then((res) => res.json())
       .then((result) => {
         const result1 = Object.entries(result);

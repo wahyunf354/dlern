@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import Spinner from "../../components/atom/Spinner";
 import TabBar from "../../components/molekul/TabBar";
 
-function KataKerja() {
+function KataKeterangan() {
   const [state, setState] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { baseUrlAPI } = useContext(HeaderContext);
@@ -18,7 +18,7 @@ function KataKerja() {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) router.push("/login");
     });
-    fetch(`${baseUrlAPI}/api/vocab/kata_kerja`)
+    fetch(`${baseUrlAPI}/api/vocab/kata_keterangan`)
       .then((res) => res.json())
       .then((result) => {
         const result1 = Object.entries(result);
@@ -32,12 +32,12 @@ function KataKerja() {
       .catch((err) => console.log(err));
   });
   return (
-    <Layout title="Kata Kerja | De'lern">
+    <Layout title="Adverb">
       <Header isBack href="/kosa-kata" />
       <main className="container mt-5 mx-auto px-5 grid grid-cols-2 md:grid-cols-6 gap-4 mb-20">
-        <h2 className="col-span-2 md:col-span-6 text-4xl font-bold text-green-900">
-          Kata Kerja
-        </h2>
+        <h1 className="col-span-2 md:col-span-6 text-4xl font-bold text-green-900">
+          Kata Keterangan
+        </h1>
         {isLoading ? (
           <div className="container p-4 mx-auto">
             <Spinner isCenter isGreen isMedium />
@@ -48,7 +48,7 @@ function KataKerja() {
               key={i}
               jerman={item.jerman}
               indo={item.indo}
-              sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/kata_kerja/${item.url_voice}`}
+              sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/kata_keterangan/${item.url_voice}`}
               type="NO_WITH_IMG"
             />
           ))
@@ -59,4 +59,4 @@ function KataKerja() {
   );
 }
 
-export default KataKerja;
+export default KataKeterangan;

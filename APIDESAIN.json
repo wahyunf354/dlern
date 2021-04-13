@@ -122,6 +122,7 @@
           "soal": "Object",
           "jawaban": "String"
         },
+
         {
           "type": "s11",
           "soal": {
@@ -133,7 +134,8 @@
         {
           "type": "s12",
           "soal": {
-            "pertanyaan": "String -> voice-url",
+            "pertanyaan": "String",
+            "voice": "voice-url",
             "pilihan": ["String"]
           },
           "jawaban": "String"
@@ -192,6 +194,15 @@
             "gambar": "String -> image-url",
             "kata": "String",
             "huruf": ["String"]
+          },
+          "jawaban": "String"
+        },
+        {
+          "type": "s33",
+          "soal": {
+            "pertanyaan": "String",
+            "pertanyaanJermal": "String",
+            "voice": "String -> voice-url"
           },
           "jawaban": "String"
         },
