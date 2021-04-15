@@ -30,7 +30,7 @@ function KataKeterangan() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <Layout title="Adverb">
       <Header isBack href="/kosa-kata" />

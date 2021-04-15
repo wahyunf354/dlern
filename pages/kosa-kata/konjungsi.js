@@ -30,7 +30,7 @@ function Konjungsi() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <Layout title="Konjungsi | D'lern">
       <Header isBack href="/kosa-kata" />

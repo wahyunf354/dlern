@@ -30,7 +30,7 @@ function KataKerja() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <Layout title="Kata Kerja | D'lern">
       <Header isBack href="/kosa-kata" />

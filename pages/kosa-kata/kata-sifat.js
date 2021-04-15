@@ -30,7 +30,7 @@ function KataSifat() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <Layout title="Kata Sifat | D'lern">
       <Header isBack href="/kosa-kata" />

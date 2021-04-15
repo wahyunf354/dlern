@@ -18,7 +18,7 @@ function Proposisi() {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) router.push("/login");
     });
-    fetch(`${baseUrlAPI}api/vocab/preporsisi`)
+    fetch(`${baseUrlAPI}/api/vocab/preporsisi`)
       .then((res) => res.json())
       .then((result) => {
         const result1 = Object.entries(result);
@@ -30,7 +30,7 @@ function Proposisi() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
   return (
     <Layout title="Proposisi">
       <Header isBack href="/kosa-kata" />
