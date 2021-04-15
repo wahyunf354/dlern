@@ -52,7 +52,7 @@ const Negara = () => {
       <Header isBack href="/kosa-kata/kata-benda" />
       <main className="container mt-5 mx-auto flex flex-col">
         <h2 className="text-4xl mx-5 font-bold text-green-900 mb-5">
-          {kategori.split("_").join(" ").toUpperCase()}
+          {kategori.toUpperCase()}
         </h2>
         <div className="mb-5 mx-5">
           <InputText

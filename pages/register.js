@@ -81,7 +81,7 @@ export default function Register() {
       })
       .catch((err) => {
         console.log(err);
-        alert("Mohon maaf terjadi masalah");
+        alert("Mohon maaf terjadi masalah : ", err.message);
         setIsLoading(false);
       });
   };
