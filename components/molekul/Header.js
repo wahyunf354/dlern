@@ -54,8 +54,8 @@ function Menu({ toggleShowMenu }) {
               </Button>
             </li>
             <li className="py-3 text-gray-700">
-              <Button type="link" href="/games">
-                Games
+              <Button type="link" href="/ayo-belajar">
+                Ayo Belajar
               </Button>
             </li>
             <li className="py-3 text-gray-700">
