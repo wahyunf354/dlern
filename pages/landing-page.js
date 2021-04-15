@@ -180,7 +180,7 @@ export default function Landing() {
 
       {/* Footer */}
       <div className="text-center bg-gray-900 text-white text-lg py-5">
-        <p>Copyright by De'lern</p>
+        <p>Copyright by D'lern</p>
       </div>
     </Layout>
   );

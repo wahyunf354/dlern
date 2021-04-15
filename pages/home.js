@@ -32,7 +32,13 @@ function ContentHome(props) {
         />
         <h2 className="hover:text-gray-500">Kosa Kata</h2>
       </Button>
-      <Button className="py-4" hasShadow hasRounded href="/games" type="link">
+      <Button
+        className="py-4"
+        hasShadow
+        hasRounded
+        href="/ayo-belajar"
+        type="link"
+      >
         <Image
           src="/assets/illustrasi/game.png"
           width={200}
@@ -94,7 +100,7 @@ function home() {
   }, []);
 
   return (
-    <Layout title="Home | De'lern">
+    <Layout title="Home | D'lern">
       <Header isFull />
       {loading ? (
         <div className="container p-4 mx-auto">

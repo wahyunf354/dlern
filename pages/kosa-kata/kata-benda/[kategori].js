@@ -48,7 +48,7 @@ const Negara = () => {
   };
 
   return (
-    <Layout title="Negara | De'lern">
+    <Layout title="Negara | D'lern">
       <Header isBack href="/kosa-kata/kata-benda" />
       <main className="container mt-5 mx-auto flex flex-col">
         <h2 className="text-4xl mx-5 font-bold text-green-900 mb-5">

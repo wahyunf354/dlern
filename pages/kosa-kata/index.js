@@ -6,7 +6,7 @@ import TabBar from "../../components/molekul/TabBar";
 
 const index = () => {
   return (
-    <Layout title="Kosa Kata | De'lern">
+    <Layout title="Kosa Kata | D'lern">
       <Header isFull />
       <main className="container mx-auto md:w-1/2 pt-20 px-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <Button

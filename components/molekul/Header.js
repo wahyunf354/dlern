@@ -84,7 +84,7 @@ function Header(props) {
       <nav className="flex px-8 justify-between py-6">
         <Image
           src="/assets/logo/logo.png"
-          alt="De'lern"
+          alt="D'lern"
           width={60}
           height={60}
         />
