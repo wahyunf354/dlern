@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import HeaderContext from "../contexts/HeaderContext";
 import firebase from "../config/firebase";
@@ -8,7 +8,6 @@ import TabBar from "../components/molekul/TabBar";
 import Button from "../components/atom/Button";
 import Spinner from "../components/atom/Spinner";
 
-// FIXME: ada masalah
 const Profil = () => {
   const router = useRouter();
   const { user, setUser } = useContext(HeaderContext);
@@ -31,26 +30,53 @@ const Profil = () => {
     console.log("upload");
   };
 
-  if (!user.name) {
-    const currentUser = firebase.auth().currentUser;
-    console.log(currentUser);
-    setIsLoading(true);
-    // if (!currentUser) router.push("/login");
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setUser(doc.data());
-          setIsLoading(false);
-        } else {
-          alert("terjadi masalah");
-          setIsLoading(false);
-        }
+  useEffect(() => {
+    if (!user.name) {
+      setIsLoading(true);
+      firebase.auth().onAuthStateChanged((user) => {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              const {
+                name,
+                email,
+                uid,
+                hour,
+                days,
+                eps,
+                koin,
+                sesion,
+              } = doc.data();
+              setUser({
+                name,
+                email,
+                uid,
+                hour,
+                days,
+                eps,
+                koin,
+                sesion,
+              });
+              setIsLoading(false);
+            } else {
+              alert("Maaf terjadi masalah ");
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document:", error);
+            alert("Maaf terjadi masalah ");
+            setIsLoading(false);
+            router.push("/login");
+          });
+        if (!user) router.push("/login");
+        setIsLoading(false);
       });
-  }
+    }
+  }, []);
 
   return (
     <Layout title={`Profile | ${user.name}`}>
