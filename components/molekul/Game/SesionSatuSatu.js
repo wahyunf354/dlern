@@ -21,7 +21,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
       </h1>
       {Object.entries(soal.pilihan).map((answer, i) => (
         <Button
-          className="p-2 border"
+          className="p-2 border bg-green-900 text-white"
           key={i}
           hasRounded
           hasShadow

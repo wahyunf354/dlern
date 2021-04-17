@@ -25,12 +25,12 @@ const sesion = {
   4: { eps: "1", sesion: "2" },
   5: { eps: "2", sesion: "2" },
   6: { eps: "3", sesion: "2" },
-  7: { eps: "1", sesion: "3" },
-  8: { eps: "2", sesion: "3" },
-  9: { eps: "3", sesion: "3" },
-  10: { eps: "1", sesion: "4" },
-  11: { eps: "2", sesion: "4" },
-  12: { eps: "3", sesion: "4" },
+  // 7: { eps: "1", sesion: "3" },
+  // 8: { eps: "2", sesion: "3" },
+  // 9: { eps: "3", sesion: "3" },
+  // 10: { eps: "1", sesion: "4" },
+  // 11: { eps: "2", sesion: "4" },
+  // 12: { eps: "3", sesion: "4" },
 };
 
 const Soal = () => {
@@ -137,7 +137,7 @@ const Soal = () => {
         eps: currentEps,
       })
       .then(() => {
-        router.push(`http://localhost:3000/games/soal?eps=${currentEps}`);
+        router.push(`http://localhost:3000/ayo-belajar/soal?eps=${currentEps}`);
         resetCoin();
         setIsLoading(false);
       })
@@ -148,7 +148,7 @@ const Soal = () => {
   };
 
   return (
-    <Layout className="h-screen" title={`Games | eps ${eps ? eps : ""}`}>
+    <Layout className="h-screen" title={`Ayo Belajar | eps ${eps ? eps : ""}`}>
       {isShowFinist ? (
         <FinistGame
           coin={coin}

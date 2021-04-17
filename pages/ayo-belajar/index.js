@@ -73,10 +73,10 @@ function Games() {
           <GameLink epsId={4} currentEps={user.eps} />
           <GameLink epsId={5} currentEps={user.eps} />
           <GameLink epsId={6} currentEps={user.eps} />
-          <GameLink epsId={7} currentEps={user.eps} />
+          {/* <GameLink epsId={7} currentEps={user.eps} />
           <GameLink epsId={8} currentEps={user.eps} />
           <GameLink epsId={9} currentEps={user.eps} />
-          <GameLink epsId={10} currentEps={user.eps} />
+          <GameLink epsId={10} currentEps={user.eps} /> */}
         </div>
       )}
       <TabBar />
