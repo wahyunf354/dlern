@@ -51,6 +51,8 @@ const Profil = () => {
                 eps,
                 koin,
                 sesion,
+                profile,
+                nameImg,
               } = doc.data();
               setUser({
                 name,
@@ -61,6 +63,8 @@ const Profil = () => {
                 eps,
                 koin,
                 sesion,
+                profile,
+                nameImg,
               });
               setIsLoading(false);
             } else {
@@ -81,18 +85,39 @@ const Profil = () => {
 
   const hendleUploadProfile = (event) => {
     const image = event.target.files[0];
-    setIsLoading(true);
-    // send to server
     console.log(image);
+    setIsLoading(true);
     const storageRef = firebase.storage().ref();
-    const imageRef = storageRef.child(image.name);
-    imageRef
-      .put(image)
+    // delete profile lama
+    const deleteRef = storageRef.child("users/" + user.nameImg);
+    deleteRef
+      .delete()
+      .then(() => {
+        console.log("success delete");
+
+        // send to server
+        const imageRef = storageRef.child("users/" + image.name);
+        return imageRef.put(image);
+      })
       .then(function (snapshot) {
         console.log("Uploaded file");
-        console.log(snapshot);
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((downloadUrl) => {
+        console.log(downloadUrl);
+        setUser({
+          ...user,
+          profile: downloadUrl,
+          nameImg: image.name,
+        });
+        return firebase.firestore().collection("users").doc(user.uid).update({
+          profile: downloadUrl,
+          nameImg: image.name,
+        });
+      })
+      .then(() => {
         setIsLoading(false);
-        // TODO: sudah bisa upload tinggal dapatkan url dan simpan ke user
+        console.log("success");
       })
       .catch((err) => console.log(err));
   };
@@ -107,20 +132,30 @@ const Profil = () => {
       ) : (
         <div className="container pt-8 mx-auto flex flex-col items-center">
           <div className="mb-5 bg-gray-300 w-40 h-40 rounded-full relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="text-gray-100 w-40 h-40"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            <div className="flex justify-center w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
+              {user.profile ? (
+                <img
+                  className="w-80 profile"
+                  src={user.profile}
+                  alt={user.name}
+                />
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="text-gray-100 w-40 h-40"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
+            </div>
             <div className="w-10 h-10 bg-green-900  rounded-full absolute bottom-0 right-0 flex justify-center items-center">
               <Button onClick={handleSelectPhoto}>
                 <svg
