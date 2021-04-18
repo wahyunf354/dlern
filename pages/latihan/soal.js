@@ -43,7 +43,7 @@ const Soal = () => {
   const [isShowFinist, setIsShowFinist] = useState(false);
   const eps = useRouter().query.eps;
   const router = useRouter();
-  const { user, baseUrlAPI } = useContext(HeaderContext);
+  const { user, baseUrlAPI, setUser } = useContext(HeaderContext);
 
   useEffect(() => {
     if (user.name == null) {
@@ -64,7 +64,7 @@ const Soal = () => {
   const handleClickAnswer = (answer) => {
     if (answer) {
       setIsCorrect(true);
-      setCoin(coin + 1);
+      setCoin(coin + 5);
     } else {
       setIsWrong(true);
     }
@@ -138,6 +138,10 @@ const Soal = () => {
       })
       .then(() => {
         router.push(`http://localhost:3000/latihan/soal?eps=${currentEps}`);
+        setUser({
+          ...user,
+          koin: currentCoin + coin,
+        });
         resetCoin();
         setIsLoading(false);
       })

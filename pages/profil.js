@@ -26,8 +26,9 @@ const Profil = () => {
       });
   };
 
-  const hendleUploadProfile = () => {
-    console.log("upload");
+  const handleSelectPhoto = () => {
+    const imageInput = document.getElementById("img_profil");
+    imageInput.click();
   };
 
   useEffect(() => {
@@ -78,6 +79,24 @@ const Profil = () => {
     }
   }, []);
 
+  const hendleUploadProfile = (event) => {
+    const image = event.target.files[0];
+    setIsLoading(true);
+    // send to server
+    console.log(image);
+    const storageRef = firebase.storage().ref();
+    const imageRef = storageRef.child(image.name);
+    imageRef
+      .put(image)
+      .then(function (snapshot) {
+        console.log("Uploaded file");
+        console.log(snapshot);
+        setIsLoading(false);
+        // TODO: sudah bisa upload tinggal dapatkan url dan simpan ke user
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Layout title={`Profile | ${user.name}`}>
       <Header isFull />
@@ -103,7 +122,7 @@ const Profil = () => {
               />
             </svg>
             <div className="w-10 h-10 bg-green-900  rounded-full absolute bottom-0 right-0 flex justify-center items-center">
-              <Button onClick={hendleUploadProfile}>
+              <Button onClick={handleSelectPhoto}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -125,6 +144,12 @@ const Profil = () => {
                   />
                 </svg>
               </Button>
+              <input
+                type="file"
+                id="img_profil"
+                onChange={hendleUploadProfile}
+                hidden
+              />
             </div>
           </div>
           <h3 className=" px-5 text-5xl mb-5 text-green-900 font-font">
@@ -140,7 +165,7 @@ const Profil = () => {
               <span className="text-sm text-gray-400 font-light"> Eps</span>
             </li>
           </ul>
-          <div className="divide-y grid grid-cols-1 w-full mt-16 divide-gray-400 divide-solid">
+          <div className="mb-20 divide-y grid grid-cols-1 w-full mt-16 divide-gray-400 divide-solid">
             <Button onClick={handleLogout} className="text-gray-400 text-xl">
               Keluar
             </Button>
