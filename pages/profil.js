@@ -127,7 +127,7 @@ const Profil = () => {
               </Button>
             </div>
           </div>
-          <h3 className="text-5xl mb-5 text-green-900 font-font">
+          <h3 className=" px-5 text-5xl mb-5 text-green-900 font-font">
             {user.name}
           </h3>
           <ul className="flex w-full border-b-2 py-5 justify-around">
@@ -139,14 +139,10 @@ const Profil = () => {
               {user.eps}
               <span className="text-sm text-gray-400 font-light"> Eps</span>
             </li>
-            <li className="text-3xl font-bold text-yellow">
-              {user.sesion}
-              <span className="text-sm text-gray-400 font-light">Sesion</span>
-            </li>
           </ul>
           <div className="divide-y grid grid-cols-1 w-full mt-16 divide-gray-400 divide-solid">
             <Button onClick={handleLogout} className="text-gray-400 text-xl">
-              Log out
+              Keluar
             </Button>
           </div>
         </div>

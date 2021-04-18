@@ -30,22 +30,20 @@ function ContentHome(props) {
           height={140}
           layout="responsive"
         />
-        <h2 className="hover:text-gray-500">Kosa Kata</h2>
+        <h2 className="hover:text-gray-500 underline text-green-900">
+          Kosa Kata
+        </h2>
       </Button>
-      <Button
-        className="py-4"
-        hasShadow
-        hasRounded
-        href="/ayo-belajar"
-        type="link"
-      >
+      <Button className="py-4" hasShadow hasRounded href="/latihan" type="link">
         <Image
           src="/assets/illustrasi/game.png"
           width={200}
           height={140}
           layout="responsive"
         />
-        <h2 className="hover:text-gray-500">Ayo Belajar</h2>
+        <h2 className="hover:text-gray-500 underline text-green-900">
+          Ayo Belajar
+        </h2>
       </Button>
     </div>
   );

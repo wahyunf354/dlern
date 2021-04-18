@@ -5,7 +5,7 @@ const GameLink = ({ epsId, currentEps }) => {
   return (
     <Button
       type="link"
-      href={`/ayo-belajar/soal?eps=${epsId}`}
+      href={`/latihan/soal?eps=${epsId}`}
       isDisabled={currentEps >= epsId ? false : true}
       hasShadow
       className={`flex ${

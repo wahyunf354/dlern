@@ -20,7 +20,11 @@ const Negara = () => {
 
   useEffect(async () => {
     try {
-      const res = await fetch(`${baseUrlAPI}/api/vocab/kata_benda/${kategori}`);
+      const res = await fetch(
+        `${baseUrlAPI}/api/vocab/kata_benda/${
+          kategori == "tempat_wisata" ? "pemandangan" : kategori
+        }`
+      );
       const result = await res.json();
       const result1 = Object.entries(result);
       const data = Object.entries(result1[0][1])[0][1];
@@ -48,7 +52,7 @@ const Negara = () => {
   };
 
   return (
-    <Layout title="Negara | D'lern">
+    <Layout title={kategori}>
       <Header isBack href="/kosa-kata/kata-benda" />
       <main className="container mt-5 mx-auto flex flex-col">
         <h2 className="text-4xl mx-5 font-bold text-green-900 mb-5">
@@ -80,6 +84,8 @@ const Negara = () => {
                       img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
                         kategori === "obat"
                           ? `${kategori}/medikament-obat`
+                          : kategori == "tempat_wisata"
+                          ? "pemandangan"
                           : kategori
                       }/${item.url_gambar}`}
                       sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${kategori}/${item.url_voice}`}

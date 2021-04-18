@@ -109,7 +109,7 @@ export default function Landing() {
         </div>
         <div className="flex flex-col justify-center items-center py-4">
           <h1 className="text-gray-800 font-bold text-8xl">D'lern</h1>
-          <p className="mb-6 text-gray-400">Jade man kann sprechen</p>
+          <p className="mb-6 text-gray-400">Jeder kann Deutsch sprechen</p>
           <Button
             type="link"
             href="/welcome"
@@ -127,14 +127,15 @@ export default function Landing() {
       <div className="px-6 md:px-96 mb-10">
         <h1 className="font-bold text-4xl text-center my-4">Apa itu D'lern</h1>
         <p className="text-gray-600">
-          <span className="text-xl text-gray-900 font-bold">D'lern</span>{" "}
-          didesain untuk umum makannya pakai bahasa Indonesia, untuk yang sudah
-          pernah belajar bahasa Jerman? Aman...
+          <span className="text-xl text-gray-900 font-bold">D'lern</span> adalah
+          aplikasi belajar bahasa Jerman. Untuk kamu yang belum pernah belajar
+          bahasa Jerman, tenang.. D'lern didesain untuk umum dengan menggunakan
+          bahasa Indonesia.
         </p>
         <p className="text-gray-600">
-          Kita punya koin yang die lernenden dapatkan ketika mengerjakan soal.
-          Setelah koin terkumpul, koin tersebut dapat dipakai untuk memilih
-          season yang lebih menantang.
+          Kita punya koin yang dapat kamu kumpulkan ketika menjawab soal latihan
+          dengan benar. Segera kumpulkan dan dapatkan akses untuk dapat memilih
+          episode yang lebih menantang!
         </p>
       </div>
 
@@ -144,13 +145,14 @@ export default function Landing() {
           <h1 className="text-gray-900 mb-5 font-bold text-4xl">Fitur</h1>
           <ol>
             <li className="text-gray-600 mb-2 md:ml-3">
-              1. Belajar bahasa dari mana aja dan kapan saja
+              1. Belajar bahasa Jerman kapan dan dimana saja
             </li>
             <li className="text-gray-600 mb-2 md:ml-3">
-              2. Akses pelajaran tanpa mengurangi penyimpanan Hp anda
+              2. Akses latihan secara daring, gratis tanpa mengurangi
+              penyimpanan gawai kamu
             </li>
             <li className="text-gray-600 mb-2 md:ml-3">
-              3. Akses vocab yang kami sediakan
+              3. Akses ratusan kosakata dalam bahasa Jerman
             </li>
             <li className="text-gray-600 mb-2 md:ml-3">
               4. Koin untuk dikumpulkan

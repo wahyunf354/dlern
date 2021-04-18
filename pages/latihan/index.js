@@ -58,7 +58,7 @@ function Games() {
   });
 
   return (
-    <Layout title="Games | D'lern">
+    <Layout title="Latihan | D'lern">
       <Header isFull />
       {isLoading ? (
         <div className="container p-4 mx-auto">

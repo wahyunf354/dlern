@@ -47,7 +47,7 @@ const Soal = () => {
 
   useEffect(() => {
     if (user.name == null) {
-      router.push("/games");
+      router.push("/latihan");
     }
     if (eps) {
       fetch(`${baseUrlAPI}/api/game/${sesion[eps].sesion}/${sesion[eps].eps}`)
@@ -109,7 +109,7 @@ const Soal = () => {
       })
       .then(() => {
         resetCoin();
-        router.push("/games");
+        router.push("/latihan");
         setIsLoading(false);
       })
       .catch((err) => {
@@ -137,7 +137,7 @@ const Soal = () => {
         eps: currentEps,
       })
       .then(() => {
-        router.push(`http://localhost:3000/ayo-belajar/soal?eps=${currentEps}`);
+        router.push(`http://localhost:3000/latihan/soal?eps=${currentEps}`);
         resetCoin();
         setIsLoading(false);
       })
@@ -159,7 +159,7 @@ const Soal = () => {
         />
       ) : (
         <>
-          <Header isBack href="/games" />
+          <Header isBack href="/latihan" />
           {isLoading ? (
             <div className="container mx-auto pt-4">
               <Spinner isCenter isGreen isMedium />

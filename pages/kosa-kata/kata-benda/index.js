@@ -51,8 +51,8 @@ const kategori = [
     link: "pakaian",
   },
   {
-    title: "Pemandangan",
-    link: "pemandangan",
+    title: "Tempat Wisata",
+    link: "tempat_wisata",
   },
   {
     title: "Penyakit",
@@ -71,9 +71,10 @@ const KataBenda = () => {
     <Layout title="Kata Benda | D'lern">
       <Header isBack href="/kosa-kata" />
       <main className="container mt-5 mx-auto flex flex-col">
-        <h2 className="text-4xl font-bold text-green-900 mb-5">Kata Benda</h2>
-
-        <div className="flex mx-2 flex-wrap mb-20">
+        <h2 className="text-4xl font-bold text-green-900 mb-5 px-5">
+          Kata Benda
+        </h2>
+        <div className="flex mx-2 flex-wrap mb-20 justify-center">
           {true ? (
             kategori.map((item, i) => (
               <Button

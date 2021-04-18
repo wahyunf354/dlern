@@ -45,26 +45,26 @@ function Menu({ toggleShowMenu }) {
           <ul className="divide-y divide-yellow-light grid grid-cols-1">
             <li className="py-3 text-gray-700">
               <Button type="link" href="/home">
-                Home
+                Beranda
               </Button>
             </li>
             <li className="py-3 text-gray-700">
               <Button type="link" href="/kosa-kata">
-                Vocab
+                Kosa Kata
               </Button>
             </li>
             <li className="py-3 text-gray-700">
-              <Button type="link" href="/ayo-belajar">
-                Ayo Belajar
+              <Button type="link" href="/latihan">
+                Latihan
               </Button>
             </li>
-            <li className="py-3 text-gray-700">
+            {/* <li className="py-3 text-gray-700">
               <Button type="link" href="">
                 Dark Mode(soon)
               </Button>
-            </li>
+            </li> */}
             <li className="py-3 text-gray-700">
-              <Button onClick={handleLogout}>log out</Button>
+              <Button onClick={handleLogout}>Keluar</Button>
             </li>
           </ul>
         </div>
@@ -147,18 +147,12 @@ function Header(props) {
             />
           </svg>
         </Button>
-        <Button
-          type="link"
-          href="/landing-page"
-          className="text-2xl font-bold text-yellow"
-        >
-          <Image
-            src="/assets/logo/logo.png"
-            alt="D'lern"
-            width={48}
-            height={48}
-          />
-        </Button>
+        <Image
+          src="/assets/logo/logo.png"
+          alt="D'lern"
+          width={48}
+          height={48}
+        />
       </header>
     );
   }
