@@ -42,7 +42,7 @@ function ContentHome(props) {
           layout="responsive"
         />
         <h2 className="hover:text-gray-500 underline text-green-900">
-          Ayo Belajar
+          Latihan
         </h2>
       </Button>
     </div>

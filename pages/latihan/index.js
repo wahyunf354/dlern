@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout";
 import Header from "../../components/molekul/Header";
-import ColumnSesion from "../../components/molekul/Game/ColumnSesion";
 import { useContext, useEffect, useState } from "react";
 import Spinner from "../../components/atom/Spinner";
 import firebase from "../../config/firebase";
@@ -8,9 +7,24 @@ import { useRouter } from "next/router";
 import HeaderContext from "../../contexts/HeaderContext";
 import TabBar from "../../components/molekul/TabBar";
 import GameLink from "../../components/molekul/Game/GameLink";
+import PopupError from "../../components/molekul/Game/PopupError";
+
+const data = [
+  { epsId: 1, minKoin: 0 },
+  { epsId: 2, minKoin: 0 },
+  { epsId: 3, minKoin: 0 },
+  { epsId: 4, minKoin: 0 },
+  { epsId: 5, minKoin: 0 },
+  { epsId: 6, minKoin: 75 },
+  { epsId: 7, minKoin: 125 },
+  { epsId: 8, minKoin: 130 },
+  { epsId: 9, minKoin: 130 },
+  { epsId: 10, minKoin: 130 },
+];
 
 function Games() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPopupError, setIsPopupError] = useState(false);
   const { user, setUser } = useContext(HeaderContext);
   const router = useRouter();
 
@@ -57,6 +71,10 @@ function Games() {
     });
   });
 
+  const togglePopup = () => {
+    setIsPopupError(!isPopupError);
+  };
+
   return (
     <Layout title="Latihan | D'lern">
       <Header isFull />
@@ -66,17 +84,26 @@ function Games() {
         </div>
       ) : (
         <div className="grid pb-16 justify-items-stretch grid-cols-1 mx-auto w-72 py-5 mx-auto">
+          {isPopupError && (
+            <>
+              <PopupError togglePopup={togglePopup} />
+            </>
+          )}
           <h3 className="font-light text-4xl text-green-900 mb-5">Episode</h3>
-          <GameLink epsId={1} currentEps={user.eps} />
-          <GameLink epsId={2} currentEps={user.eps} />
-          <GameLink epsId={3} currentEps={user.eps} />
-          <GameLink epsId={4} currentEps={user.eps} />
-          <GameLink epsId={5} currentEps={user.eps} />
-          <GameLink epsId={6} currentEps={user.eps} />
-          {/* <GameLink epsId={7} currentEps={user.eps} />
-          <GameLink epsId={8} currentEps={user.eps} />
-          <GameLink epsId={9} currentEps={user.eps} />
-          <GameLink epsId={10} currentEps={user.eps} /> */}
+          <GameLink epsId={1} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={2} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={3} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={4} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={5} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={6} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={7} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={8} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink epsId={9} currentEps={user.eps} togglePopup={togglePopup} />
+          <GameLink
+            epsId={10}
+            currentEps={user.eps}
+            togglePopup={togglePopup}
+          />
         </div>
       )}
       <TabBar />
