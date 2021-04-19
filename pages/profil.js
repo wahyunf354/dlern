@@ -133,7 +133,7 @@ const Profil = () => {
         <div className="container pt-8 mx-auto flex flex-col items-center">
           <div className="mb-5 bg-gray-300 w-40 h-40 rounded-full relative">
             <div className="flex justify-center w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
-              {user.profile ? (
+              {user.profile != "" ? (
                 <img
                   className="w-80 profile"
                   src={user.profile}
