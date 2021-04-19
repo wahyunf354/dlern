@@ -46,6 +46,8 @@ function Games() {
               eps,
               koin,
               sesion,
+              profile,
+              nameImg,
             } = doc.data();
             setUser({
               name,
@@ -56,6 +58,8 @@ function Games() {
               eps,
               koin,
               sesion,
+              profile,
+              nameImg,
             });
             setIsLoading(false);
           } else {

@@ -73,8 +73,8 @@ export default function Register() {
           koin: 0,
           sesion: 1,
           eps: 1,
-          profile: null,
-          nameImg: null,
+          profile: "",
+          nameImg: "",
         });
       })
       .then(() => {
