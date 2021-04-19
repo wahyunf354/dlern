@@ -72,6 +72,8 @@ function home() {
               eps,
               koin,
               sesion,
+              profile,
+              nameImg,
             } = doc.data();
             setUser({
               name,
@@ -82,6 +84,8 @@ function home() {
               eps,
               koin,
               sesion,
+              profile,
+              nameImg,
             });
             setLoading(false);
           } else {

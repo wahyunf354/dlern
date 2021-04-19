@@ -79,6 +79,7 @@ const Negara = () => {
               {!isShowSearch
                 ? data.map((item, i) => (
                     <ItemKata
+                      key={i}
                       jerman={item.jerman}
                       indo={item.indo}
                       img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
@@ -94,6 +95,7 @@ const Negara = () => {
                   ))
                 : resultSearch.map((item, i) => (
                     <ItemKata
+                      key={i}
                       jerman={item.jerman}
                       indo={item.indo}
                       img={`https://dlern-rest.000webhostapp.com/assets/vocab/gambar/${
