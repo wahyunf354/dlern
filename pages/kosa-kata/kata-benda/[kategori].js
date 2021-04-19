@@ -105,7 +105,9 @@ const Negara = () => {
                           ? `${kategori}/medikament-obat`
                           : kategori
                       }/${item.url_gambar}`}
-                      sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${kategori}/${item.url_voice}`}
+                      sound={`https://dlern-rest.000webhostapp.com/assets/vocab/suara/${
+                        kategori == "tempat_wisata" ? "pemandangan" : kategori
+                      }/${item.url_voice}`}
                       type="WITH_IMG"
                     />
                   ))}
