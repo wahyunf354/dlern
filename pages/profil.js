@@ -89,37 +89,64 @@ const Profil = () => {
     setIsLoading(true);
     const storageRef = firebase.storage().ref();
     // delete profile lama
-    const deleteRef = storageRef.child("users/" + user.nameImg);
-    deleteRef
-      .delete()
-      .then(() => {
-        console.log("success delete");
+    if (user.nameImg != "nophoto.png") {
+      const deleteRef = storageRef.child("users/" + user.nameImg);
+      deleteRef
+        .delete()
+        .then(() => {
+          console.log("success delete");
 
-        // send to server
-        const imageRef = storageRef.child("users/" + image.name);
-        return imageRef.put(image);
-      })
-      .then(function (snapshot) {
-        console.log("Uploaded file");
-        return snapshot.ref.getDownloadURL();
-      })
-      .then((downloadUrl) => {
-        console.log(downloadUrl);
-        setUser({
-          ...user,
-          profile: downloadUrl,
-          nameImg: image.name,
-        });
-        return firebase.firestore().collection("users").doc(user.uid).update({
-          profile: downloadUrl,
-          nameImg: image.name,
-        });
-      })
-      .then(() => {
-        setIsLoading(false);
-        console.log("success");
-      })
-      .catch((err) => console.log(err));
+          // send to server
+          const imageRef = storageRef.child("users/" + image.name);
+          return imageRef.put(image);
+        })
+        .then(function (snapshot) {
+          console.log("Uploaded file");
+          return snapshot.ref.getDownloadURL();
+        })
+        .then((downloadUrl) => {
+          console.log(downloadUrl);
+          setUser({
+            ...user,
+            profile: downloadUrl,
+            nameImg: image.name,
+          });
+          return firebase.firestore().collection("users").doc(user.uid).update({
+            profile: downloadUrl,
+            nameImg: image.name,
+          });
+        })
+        .then(() => {
+          setIsLoading(false);
+          console.log("success");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      const imageRef = storageRef.child("users/" + image.name);
+      imageRef
+        .put(image)
+        .then(function (snapshot) {
+          console.log("Uploaded file");
+          return snapshot.ref.getDownloadURL();
+        })
+        .then((downloadUrl) => {
+          console.log(downloadUrl);
+          setUser({
+            ...user,
+            profile: downloadUrl,
+            nameImg: image.name,
+          });
+          return firebase.firestore().collection("users").doc(user.uid).update({
+            profile: downloadUrl,
+            nameImg: image.name,
+          });
+        })
+        .then(() => {
+          setIsLoading(false);
+          console.log("success");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -133,7 +160,7 @@ const Profil = () => {
         <div className="container pt-8 mx-auto flex flex-col items-center">
           <div className="mb-5 bg-gray-300 w-40 h-40 rounded-full relative">
             <div className="flex justify-center w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
-              {user.profile != "" ? (
+              {user.nameImg != "nophoto.png" ? (
                 <img
                   className="w-80 profile"
                   src={user.profile}

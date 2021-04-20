@@ -73,8 +73,9 @@ export default function Register() {
           koin: 0,
           sesion: 1,
           eps: 1,
-          profile: "",
-          nameImg: "",
+          profile:
+            "https://firebasestorage.googleapis.com/v0/b/d-lern.appspot.com/o/users%2Fnophoto.png?alt=media&token=8e7c01d0-8cc0-4d12-921d-71d75a8359ad",
+          nameImg: "nophoto.png",
         });
       })
       .then(() => {
