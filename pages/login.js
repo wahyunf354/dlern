@@ -18,7 +18,7 @@ const login = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) router.push("/home");
+      if (!user) router.push("/home");
     });
   }, []);
 
