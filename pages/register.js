@@ -4,7 +4,7 @@ import Days from "../components/molekul/Register/Days";
 import Hour from "../components/molekul/Register/Hour";
 import Name from "../components/molekul/Register/Name";
 import Fade from "react-reveal/Fade";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Header from "../components/molekul/Header";
 import Stepper from "../components/atom/Stepper";
 import Meta from "../components/atom/Stepper/Meta";
@@ -14,10 +14,12 @@ import Button from "../components/atom/Button";
 import firebase from "../config/firebase";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
+import HeaderContext from "../contexts/HeaderContext";
 
 export default function Register() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { user, setUser } = useContext(HeaderContext);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -64,7 +66,7 @@ export default function Register() {
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password)
       .then((result) => {
-        firebase.firestore().collection("users").doc(result.user.uid).set({
+        const newData = {
           name: data.name,
           email: data.email,
           uid: result.user.uid,
@@ -76,7 +78,13 @@ export default function Register() {
           profile:
             "https://firebasestorage.googleapis.com/v0/b/d-lern.appspot.com/o/users%2Fnophoto.png?alt=media&token=8e7c01d0-8cc0-4d12-921d-71d75a8359ad",
           nameImg: "nophoto.png",
-        });
+        };
+        setUser(newData);
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(result.user.uid)
+          .set(newData);
       })
       .then(() => {
         setIsLoading(false);

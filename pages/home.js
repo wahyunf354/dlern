@@ -56,48 +56,27 @@ function home() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      firebase
-        .firestore()
-        .collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            const {
-              name,
-              email,
-              uid,
-              hour,
-              days,
-              eps,
-              koin,
-              sesion,
-              profile,
-              nameImg,
-            } = doc.data();
-            setUser({
-              name,
-              email,
-              uid,
-              hour,
-              days,
-              eps,
-              koin,
-              sesion,
-              profile,
-              nameImg,
-            });
+      if (user) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              setUser(doc.data());
+            }
             setLoading(false);
-          } else {
+          })
+          .catch((error) => {
+            console.log("Error getting document:", error);
             alert("Maaf terjadi masalah ");
-          }
-        })
-        .catch((error) => {
-          console.log("Error getting document:", error);
-          alert("Maaf terjadi masalah ");
-          router.push("/login");
-        });
-      if (!user) router.push("/login");
+            setLoading(false);
+            router.push("/login");
+          });
+      } else {
+        router.push("/login");
+      }
     });
   }, []);
 
