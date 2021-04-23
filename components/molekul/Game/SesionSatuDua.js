@@ -32,7 +32,6 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
             className="w-30 h-30 text-yellow"
           />
         </Button>
-        <p className="mb-10 text-gray-500 text-xl">{soal.keterangan_voice}</p>
         {Object.entries(soal.pilihan).map((answer, i) => (
           <Button
             isPrimary

@@ -37,30 +37,7 @@ function Games() {
         .get()
         .then((doc) => {
           if (doc.exists) {
-            const {
-              name,
-              email,
-              uid,
-              hour,
-              days,
-              eps,
-              koin,
-              sesion,
-              profile,
-              nameImg,
-            } = doc.data();
-            setUser({
-              name,
-              email,
-              uid,
-              hour,
-              days,
-              eps,
-              koin,
-              sesion,
-              profile,
-              nameImg,
-            });
+            setUser(doc.data());
             setIsLoading(false);
           } else {
             router.push("/login");

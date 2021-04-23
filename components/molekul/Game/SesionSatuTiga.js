@@ -8,7 +8,9 @@ function SesionSatuTiga({ question, handleClickAnswer }) {
   const [answer, setAnswer] = useState([]);
 
   const handleClick = (answer) => {
-    if (answer.toUpperCase() == jawaban.join(" ").toUpperCase()) {
+    if (answer.toUpperCase() === "SEGELAS SUSU") {
+      handleClickAnswer(true);
+    } else if (answer.toUpperCase() == jawaban.join(" ").toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);
@@ -31,8 +33,8 @@ function SesionSatuTiga({ question, handleClickAnswer }) {
   return (
     <Fade>
       <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
-        {/* <h1 className="text-xl">Tulis dalam Bahasa Indonesia</h1> */}
-        <p className="mb-10 text-gray-500 text-xl">{soal.pertanyaan}</p>
+        <h1 className="text-xl">{soal.pertanyaanIndo}</h1>
+        <p className="mb-10 text-gray-500 text-xl">{soal.pertanyaanJerm}</p>
 
         <div className="text-center p-3 mb-10 border h-28 md:w-1/2 w-full rounded-lg">
           {answer.map((answer, i) => (
@@ -85,7 +87,7 @@ function SesionSatuTiga({ question, handleClickAnswer }) {
 }
 
 SesionSatuTiga.propTypes = {
-  soal: propTypes.object.isRequired,
+  question: propTypes.object.isRequired,
   handleClickAnswer: propTypes.func,
 };
 
