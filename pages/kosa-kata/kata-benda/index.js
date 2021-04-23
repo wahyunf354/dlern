@@ -11,64 +11,69 @@ import Spinner from "../../../components/atom/Spinner";
 
 const kategori = [
   {
-    title: "Bagian Tubuh",
-    link: "bagian_tubuh",
-    minKoin: 25,
-  },
-  {
-    title: "Barang Di Kantor",
-    link: "barang_dikantor",
-    minKoin: 25,
-  },
-  {
-    title: "Barang Di Rumah",
-    link: "barang_dirumah",
+    title: "Minuman",
+    link: "minuman",
     minKoin: 0,
   },
   {
     title: "Benda dalam Kelas",
     link: "benda_dalam_kelas",
-    minKoin: 50,
+    minKoin: 20,
   },
   {
-    title: "Cuaca",
-    link: "cuaca",
-    minKoin: 50,
-  },
-  {
-    title: "Makanan dan Minuman",
-    link: "makanan_dan_minuman",
-    minKoin: 0,
-  },
-  {
-    title: "Minuman",
-    link: "minuman",
-    minKoin: 70,
+    title: "Tempat Wisata",
+    link: "tempat_wisata",
+    minKoin: 20,
   },
   {
     title: "Negara",
     link: "negara",
-    minKoin: 0,
+    minKoin: 20,
   },
   {
-    title: "Obat",
-    link: "obat",
+    title: "Barang Di Rumah",
+    link: "barang_dirumah",
+    minKoin: 46,
+  },
+  {
+    title: "Barang Di Kantor",
+    link: "barang_dikantor",
+    minKoin: 46,
+  },
+  {
+    title: "Pekerjaan",
+    link: "pekerjaan",
+    minKoin: 46,
+  },
+  {
+    title: "Makanan dan Minuman",
+    link: "makanan_dan_minuman",
     minKoin: 70,
   },
   {
     title: "Pakaian",
     link: "pakaian",
-    minKoin: 80,
+    minKoin: 70,
   },
   {
-    title: "Tempat Wisata",
-    link: "tempat_wisata",
-    minKoin: 0,
+    title: "Cuaca",
+    link: "cuaca",
+    minKoin: 70,
+  },
+  {
+    title: "Bagian Tubuh",
+    link: "bagian_tubuh",
+    minKoin: 95,
   },
   {
     title: "Penyakit",
     link: "penyakit",
-    minKoin: 100,
+    minKoin: 95,
+  },
+  {
+    title: "Obat",
+    link: "obat",
+    minKoin: 95,
   },
 ];
 

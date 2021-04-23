@@ -42,6 +42,7 @@ const Soal = () => {
   const [isWrong, setIsWrong] = useState(false);
   const [isShowFinist, setIsShowFinist] = useState(false);
   const eps = useRouter().query.eps;
+  const complate = useRouter().query.complate;
   const router = useRouter();
   const { user, baseUrlAPI, setUser } = useContext(HeaderContext);
 
@@ -91,6 +92,12 @@ const Soal = () => {
 
   const handleToHome = () => {
     setIsLoading(true);
+    if (complate) {
+      resetCoin();
+      router.push("/latihan");
+      setIsLoading(false);
+      return;
+    }
 
     const currentCoin = parseInt(user.koin);
     console.log(user);
@@ -120,6 +127,13 @@ const Soal = () => {
 
   const handleNextEps = () => {
     setIsLoading(true);
+
+    if (complate) {
+      resetCoin();
+      router.push("/latihan");
+      setIsLoading(false);
+      return;
+    }
 
     const currentCoin = parseInt(user.koin);
     console.log(user);

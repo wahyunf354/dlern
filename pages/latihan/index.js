@@ -11,15 +11,15 @@ import PopupError from "../../components/molekul/Game/PopupError";
 
 const data = [
   { epsId: 1, minKoin: 0 },
-  { epsId: 2, minKoin: 0 },
-  { epsId: 3, minKoin: 0 },
-  { epsId: 4, minKoin: 0 },
-  { epsId: 5, minKoin: 0 },
-  { epsId: 6, minKoin: 75 },
-  { epsId: 7, minKoin: 125 },
-  { epsId: 8, minKoin: 130 },
-  { epsId: 9, minKoin: 130 },
-  { epsId: 10, minKoin: 130 },
+  { epsId: 2, minKoin: 22 },
+  { epsId: 3, minKoin: 22 },
+  { epsId: 4, minKoin: 22 },
+  { epsId: 5, minKoin: 95 },
+  { epsId: 6, minKoin: 95 },
+  { epsId: 7, minKoin: 95 },
+  { epsId: 8, minKoin: 170 },
+  { epsId: 9, minKoin: 170 },
+  { epsId: 10, minKoin: 170 },
 ];
 
 function Games() {

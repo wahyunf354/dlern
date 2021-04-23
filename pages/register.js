@@ -120,7 +120,7 @@ export default function Register() {
     },
     hour: {
       title: "Mau Kapan Kamu Diingatkan?",
-      description: "Kami akan mengingatkanmu selalu",
+      description: "Kami akan mengingatkanmu untuk kembali belajar",
       content: <Hour onChange={onChange} value={data} />,
     },
     days: {
