@@ -29,7 +29,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
         >
           <img
             src="/assets/icons/speaker.svg"
-            className="w-30 h-30 text-yellow"
+            className="w-30 h-30 text-yellow mb-5"
           />
         </Button>
         {Object.entries(soal.pilihan).map((answer, i) => (
@@ -37,7 +37,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
             isPrimary
             hasRounded
             hasShadow
-            className="w-60"
+            className="w-60 mb-3"
             key={i}
             onClick={() => handleClick(answer[0])}
           >

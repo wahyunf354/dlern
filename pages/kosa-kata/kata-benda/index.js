@@ -41,8 +41,8 @@ const kategori = [
     minKoin: 46,
   },
   {
-    title: "Pekerjaan",
-    link: "pekerjaan",
+    title: "Profesi",
+    link: "profesi",
     minKoin: 46,
   },
   {
