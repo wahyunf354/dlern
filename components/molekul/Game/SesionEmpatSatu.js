@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
+import HeaderContext from "../../../contexts/HeaderContext";
 
 function SesionEmpatSatu({ question, handleClickAnswer }) {
   const { soal, jawaban } = question;
+  const { baseUrlAPI } = useContext(HeaderContext);
 
   const handleClick = (answer) => {
     if (jawaban == "") {
@@ -23,7 +25,11 @@ function SesionEmpatSatu({ question, handleClickAnswer }) {
           {soal.pertanyaan}
         </h1>
         <div>
-          <img src={soal.gambar} className="w-32" alt={soal.pertanyaan} />
+          <img
+            src={baseUrlAPI + soal.gambar}
+            className="w-32"
+            alt={soal.pertanyaan}
+          />
         </div>
         <div className="mt-10">
           {Object.entries(soal.pilihan).map((e, i) => (

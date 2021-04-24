@@ -3,6 +3,10 @@ import Fade from "react-reveal/Fade";
 import Button from "../../atom/Button";
 
 const PopupCorrect = ({ handleClickNext }) => {
+  setTimeout(() => {
+    handleClickNext();
+  }, 5000);
+
   return (
     <>
       <div className="fixed inset-0 bg-gray-200 z-20 opacity-50"></div>
