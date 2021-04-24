@@ -20,6 +20,12 @@ function SesionDuaSatu({ question, handleClickAnswer }) {
     }
   };
 
+  setTimeout(async() => {
+    console.log("play");
+    const audio = new Audio(`${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`);
+    await audio.play();
+  }, 3000);
+
   const playAudio = async (url) => {
     console.log("play");
     const audio = new Audio(url);

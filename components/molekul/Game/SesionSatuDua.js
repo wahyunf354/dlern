@@ -14,6 +14,15 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
       handleClickAnswer(false);
     }
   };
+
+  setTimeout(async () => {
+    console.log("play");
+    const audio = new Audio(
+      `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
+    );
+    await audio.play();
+  }, 3000);
+
   const playAudio = async (url) => {
     const audio = new Audio(url);
     await audio.play();
