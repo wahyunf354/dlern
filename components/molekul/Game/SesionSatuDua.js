@@ -21,7 +21,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
     );
     await audio.play();
-  }, 3000);
+  }, 500);
 
   const playAudio = async (url) => {
     const audio = new Audio(url);

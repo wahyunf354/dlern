@@ -24,7 +24,7 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
     );
     await audio.play();
-  }, 3000);
+  }, 500);
 
   const playAudio = async (url) => {
     console.log("play");
