@@ -161,7 +161,11 @@ const Profil = () => {
           <div className="mb-5 bg-gray-300 w-40 h-40 rounded-full relative">
             <div className="flex justify-center w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
               {user.nameImg != "nophoto.png" ? (
-                <img src={user.profile} alt={user.name} />
+                <img
+                  src={user.profile}
+                  alt={user.name}
+                  className="object-cover"
+                />
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
