@@ -7,7 +7,9 @@ function SesionEmpatSatu({ question, handleClickAnswer }) {
   const { soal, jawaban } = question;
 
   const handleClick = (answer) => {
-    if (answer.toUpperCase() == jawaban.toUpperCase()) {
+    if (jawaban == "") {
+      handleClickAnswer(true);
+    } else if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
       handleClickAnswer(false);
@@ -31,9 +33,9 @@ function SesionEmpatSatu({ question, handleClickAnswer }) {
               hasShadow
               hasRounded
               className="m-2 w-full font-bold"
-              onClick={() => handleClick(e)}
+              onClick={() => handleClick(e[0])}
             >
-              {e}
+              {e[1]}
             </Button>
           ))}
         </div>
