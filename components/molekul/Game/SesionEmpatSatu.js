@@ -24,7 +24,7 @@ function SesionEmpatSatu({ question, handleClickAnswer }) {
           <img src={soal.gambar} className="w-32" alt={soal.pertanyaan} />
         </div>
         <div className="mt-10">
-          {soal.pilihan.map((e, i) => (
+          {Object.entries(soal.pilihan).map((e, i) => (
             <Button
               key={i}
               isPrimary
