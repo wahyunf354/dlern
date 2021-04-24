@@ -4,7 +4,7 @@ import Button from "../../atom/Button";
 import Fade from "react-reveal";
 import HeaderContext from "../../../contexts/HeaderContext";
 
-function SesionDuaDua({ question, handleClickAnswer }) {
+function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
   const { soal, jawaban } = question;
   const { baseUrlAPI } = useContext(HeaderContext);
 
@@ -27,7 +27,13 @@ function SesionDuaDua({ question, handleClickAnswer }) {
   return (
     <Fade>
       <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
-        <h1 className="col-span-2 text-2xl py-5">Terjemahkan kalimat ini. </h1>
+        {isTigaTiga ? (
+          <h1 className="col-span-2 text-2xl py-5">Pilih kata yang hilang</h1>
+        ) : (
+          <h1 className="col-span-2 text-2xl py-5">
+            Terjemahkan kalimat ini.{" "}
+          </h1>
+        )}
         <div className="flex items-center">
           <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
             <img

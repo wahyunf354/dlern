@@ -4,7 +4,11 @@ import Fade from "react-reveal/Fade";
 import HeaderContext from "../../../contexts/HeaderContext";
 import Button from "../../atom/Button";
 
-const SesionTigaDua = ({ question, handleClickAnswer }) => {
+const SesionTigaDua = ({
+  question,
+  handleClickAnswer,
+  handleNextQuestions,
+}) => {
   const { soal, jawaban } = question;
   const [answer, setAnswer] = useState([]);
   const { baseUrlAPI } = useContext(HeaderContext);
@@ -38,71 +42,94 @@ const SesionTigaDua = ({ question, handleClickAnswer }) => {
     await audio.play();
   };
 
+  const handleClickNext = () => {
+    handleNextQuestions();
+  };
+
   return (
     <Fade>
-      <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
-        <h1 className="text-lg text-gray-900 font-light">
-          Susun hingga menjadi kata yang sempurna!
-        </h1>
-        <div className="flex items-center">
-          <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
-            <img
-              src="/assets/icons/speaker.svg"
-              className="w-12 h-12 text-yellow"
-            />
-          </Button>
-          <p className="text-2xl font-bold ml-4 text-gray-600">{soal.kata}</p>
-        </div>
-        <div className="w-full">
-          <img
-            src={soal.gambar}
-            alt={soal.kata}
-            className="object-contain h-20 mx-auto"
-          />
-        </div>
-        <div className="p-2 mb-4 border h-44 md:h-28 md:w-1/2 w-full rounded-lg text-center">
-          {answer.map((answer, i) => (
+      {true ? (
+        <div className="w-full h-40 flex justify-center items-center flex-col">
+          <h1 className="text-2xl text-gray-700 mb-8">
+            Lanjutkan Perjuanganmu
+          </h1>
+          <div>
             <Button
-              isSecondary
+              isPrimary
               hasShadow
-              className="m-1 rounded-full ring-2 ring-gray-500 ring-opacity-50"
-              key={i}
-              onClick={() => handleRemoveChoice(answer)}
+              hasRounded
+              className="w-full"
+              onClick={handleClickNext}
             >
-              <p>{answer}</p>
+              Lanjut
             </Button>
-          ))}
+          </div>
         </div>
-        {/* TODO: Terdapat masalah ketika menjawab benar */}
-        <div className="text-center h-44 md:h-28 md:w-1/2 w-full">
-          {soal.huruf.map((choice, i) => {
-            if (choice === "") return;
-            return (
+      ) : (
+        <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
+          <h1 className="text-lg text-gray-900 font-light">
+            Susun hingga menjadi kata yang sempurna!
+          </h1>
+          <div className="flex items-center">
+            <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
+              <img
+                src="/assets/icons/speaker.svg"
+                className="w-12 h-12 text-yellow"
+              />
+            </Button>
+            <p className="text-2xl font-bold ml-4 text-gray-600">{soal.kata}</p>
+          </div>
+          <div className="w-full">
+            <img
+              src={soal.gambar}
+              alt={soal.kata}
+              className="object-contain h-20 mx-auto"
+            />
+          </div>
+          <div className="p-2 mb-4 border h-44 md:h-28 md:w-1/2 w-full rounded-lg text-center">
+            {answer.map((answer, i) => (
               <Button
                 isSecondary
                 hasShadow
-                className="rounded-full m-1 ring-2 ring-gray-500 ring-opacity-50"
+                className="m-1 rounded-full ring-2 ring-gray-500 ring-opacity-50"
                 key={i}
-                onClick={() => handleClickChoice(choice)}
+                onClick={() => handleRemoveChoice(answer)}
               >
-                <p>{choice}</p>
+                <p>{answer}</p>
               </Button>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+          {/* TODO: Terdapat masalah ketika menjawab benar */}
+          <div className="text-center h-44 md:h-28 md:w-1/2 w-full">
+            {soal.huruf.map((choice, i) => {
+              if (choice === "") return;
+              return (
+                <Button
+                  isSecondary
+                  hasShadow
+                  className="rounded-full m-1 ring-2 ring-gray-500 ring-opacity-50"
+                  key={i}
+                  onClick={() => handleClickChoice(choice)}
+                >
+                  <p>{choice}</p>
+                </Button>
+              );
+            })}
+          </div>
 
-        <div className="w-full md:w-1/2">
-          <Button
-            isPrimary
-            hasShadow
-            hasRounded
-            className="w-full"
-            onClick={() => handleClick(answer.join(""))}
-          >
-            Lanjut
-          </Button>
-        </div>
-      </main>
+          <div className="w-full md:w-1/2">
+            <Button
+              isPrimary
+              hasShadow
+              hasRounded
+              className="w-full"
+              onClick={() => handleClick(answer.join(""))}
+            >
+              Lanjut
+            </Button>
+          </div>
+        </main>
+      )}
     </Fade>
   );
 };

@@ -239,6 +239,15 @@ const Soal = () => {
                 <SesionTigaDua
                   question={currentSoals[currentQuestion]}
                   handleClickAnswer={handleClickAnswer}
+                  handleNextQuestions={handleNextQuestions}
+                />
+              )}
+
+              {currentSoals[currentQuestion].type_soal == "s33" && (
+                <SesionDuaDua
+                  isTigaTiga
+                  question={currentSoals[currentQuestion]}
+                  handleClickAnswer={handleClickAnswer}
                 />
               )}
 
