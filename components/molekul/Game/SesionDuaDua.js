@@ -8,14 +8,6 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
   const { soal, jawaban } = question;
   const { baseUrlAPI } = useContext(HeaderContext);
 
-  const time = setTimeout(async () => {
-    console.log("play");
-    const audio = new Audio(
-      `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
-    );
-    await audio.play();
-  }, 500);
-
   const handleClick = (answer) => {
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
@@ -28,7 +20,6 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
     console.log("play");
     const audio = new Audio(url);
     await audio.play();
-    clearTimeout(time);
   };
 
   return (

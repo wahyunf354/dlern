@@ -13,14 +13,6 @@ const SesionTigaDua = ({
   const [answer, setAnswer] = useState([]);
   const { baseUrlAPI } = useContext(HeaderContext);
 
-  const time = setTimeout(async () => {
-    console.log("play");
-    const audio = new Audio(
-      `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
-    );
-    await audio.play();
-  }, 500);
-
   const handleClick = (answer) => {
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
@@ -48,7 +40,6 @@ const SesionTigaDua = ({
     console.log("play");
     const audio = new Audio(url);
     await audio.play();
-    clearTimeout(time);
   };
 
   const handleClickNext = () => {
