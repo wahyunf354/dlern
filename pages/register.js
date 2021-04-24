@@ -161,7 +161,7 @@ export default function Register() {
                   hasShadow
                   hasRounded
                   type="link"
-                  href="landing-page"
+                  href="welcome"
                 >
                   Batal
                 </Button>
