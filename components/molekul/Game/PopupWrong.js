@@ -3,9 +3,14 @@ import Fade from "react-reveal/Fade";
 import Button from "../../atom/Button";
 
 const PopupCorrect = ({ handleClickNext }) => {
-  setTimeout(() => {
+  const time = setTimeout(() => {
     handleClickNext();
   }, 5000);
+
+  const clickNext = () => {
+    handleClickNext();
+    clearTimeout(time);
+  };
 
   return (
     <>
@@ -30,10 +35,7 @@ const PopupCorrect = ({ handleClickNext }) => {
             <p className="font-bold text-xl">Das ist falsch!</p>
             <p>Itu salah</p>
           </div>
-          <Button
-            className="self-end justify-self-start"
-            onClick={handleClickNext}
-          >
+          <Button className="self-end justify-self-start" onClick={clickNext}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

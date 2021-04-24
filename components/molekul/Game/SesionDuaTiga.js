@@ -17,10 +17,7 @@ function SesionDuaTiga({ question, handleClickAnswer }) {
   return (
     <Fade>
       <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
-        <h1 className="col-span-2 font-ligth text-lg text-gray-400 py-5">
-          Pilihlah arti yang benar!
-        </h1>
-        <p className="text-xl ml-4 text-gray-600">"{soal.pertanyaan}"</p>
+        <p className="text-xl ml-4 text-gray-700">{soal.pertanyaan}</p>
         <div className="flex flex-col items-center flex-wrap mt-10">
           {Object.entries(soal.pilihan).map((e, i) => (
             <Button
