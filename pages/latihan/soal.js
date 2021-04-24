@@ -172,6 +172,7 @@ const Soal = () => {
           home={handleToHome}
           isLoading={isLoading}
           handleNextEps={handleNextEps}
+          isCompelate={complate}
         />
       ) : (
         <>

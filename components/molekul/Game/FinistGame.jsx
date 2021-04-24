@@ -2,12 +2,27 @@ import Button from "../../atom/Button";
 import Spinner from "../../atom/Spinner";
 import PropTypes from "prop-types";
 
-const FinistGame = ({ coin, reset, home, isLoading, handleNextEps }) => {
+const FinistGame = ({
+  coin,
+  reset,
+  home,
+  isLoading,
+  handleNextEps,
+  isCompelate,
+}) => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="w-96 h-60 bg-yellow rounded-lg shadow-lg flex flex-col justify-center items-center">
-        <p className="text-white text-xl font-light">Koin yang kamu dapat</p>
-        <h1 className="text-white font-bold text-4xl mb-4"> {coin} </h1>
+        {isCompelate ? (
+          ""
+        ) : (
+          <>
+            <p className="text-white text-xl font-light">
+              Koin yang kamu dapat
+            </p>
+            <h1 className="text-white font-bold text-4xl mb-4"> {coin} </h1>
+          </>
+        )}
         {isLoading ? (
           <div className="w-full flex justify-center items-center">
             <Spinner isSmall isWhite />
