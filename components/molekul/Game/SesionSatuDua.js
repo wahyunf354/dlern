@@ -15,7 +15,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
     }
   };
 
-  setTimeout(async () => {
+  const time = setTimeout(async () => {
     console.log("play");
     const audio = new Audio(
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
@@ -26,6 +26,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
   const playAudio = async (url) => {
     const audio = new Audio(url);
     await audio.play();
+    clearTimeout(time);
   };
   return (
     <Fade>

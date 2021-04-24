@@ -36,7 +36,7 @@ const SesionTigaDua = ({
     }
   };
 
-  setTimeout(async () => {
+  const time = setTimeout(async () => {
     console.log("play");
     const audio = new Audio(
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
@@ -48,6 +48,7 @@ const SesionTigaDua = ({
     console.log("play");
     const audio = new Audio(url);
     await audio.play();
+    clearTimeout(time);
   };
 
   const handleClickNext = () => {

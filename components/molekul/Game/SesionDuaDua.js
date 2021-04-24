@@ -18,7 +18,7 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
     }
   };
 
-  setTimeout(async () => {
+  const time = setTimeout(async () => {
     console.log("play");
     const audio = new Audio(
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
@@ -30,6 +30,7 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
     console.log("play");
     const audio = new Audio(url);
     await audio.play();
+    clearTimeout(time);
   };
 
   return (
