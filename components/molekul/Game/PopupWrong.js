@@ -35,10 +35,7 @@ const PopupCorrect = ({ handleClickNext }) => {
             <p className="font-bold text-xl">Das ist falsch!</p>
             <p>Itu salah</p>
           </div>
-          <Button
-            className="self-end justify-self-start"
-            onClick={() => clickNext()}
-          >
+          <Button className="self-end justify-self-start" onClick={clickNext}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

@@ -17,7 +17,6 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
   }, 500);
 
   const handleClick = (answer) => {
-    clearTimeout(time);
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {

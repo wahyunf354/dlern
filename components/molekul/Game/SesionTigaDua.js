@@ -22,8 +22,6 @@ const SesionTigaDua = ({
   }, 500);
 
   const handleClick = (answer) => {
-    clearTimeout(time);
-
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {

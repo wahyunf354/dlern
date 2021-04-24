@@ -17,9 +17,6 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
   }, 500);
 
   const handleClick = (answer) => {
-    console.log(answer);
-    console.log(jawaban);
-    clearTimeout(time);
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
     } else {
