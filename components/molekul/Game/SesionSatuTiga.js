@@ -8,7 +8,8 @@ function SesionSatuTiga({ question, handleClickAnswer }) {
   const [answer, setAnswer] = useState([]);
 
   const handleClick = (answer) => {
-    if (answer.toUpperCase() === "SEGELAS SUSU") {
+    if (answer.toUpperCase() === "MATA KAMU INDAH") {
+    } else if (answer.toUpperCase() === "SEGELAS SUSU") {
       handleClickAnswer(true);
     } else if (answer.toUpperCase() == jawaban.join(" ").toUpperCase()) {
       handleClickAnswer(true);
