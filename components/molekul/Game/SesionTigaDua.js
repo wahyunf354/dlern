@@ -19,7 +19,6 @@ const SesionTigaDua = ({
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
     );
     await audio.play();
-    clearTimeout(time);
   }, 500);
 
   const handleClick = (answer) => {

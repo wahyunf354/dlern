@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
 import Fade from "react-reveal";
@@ -14,7 +14,6 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
     );
     await audio.play();
-    clearTimeout(time);
   }, 500);
 
   const handleClick = (answer) => {
