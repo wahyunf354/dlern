@@ -35,7 +35,11 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
           </h1>
         )}
         <div className="flex items-center">
-          <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
+          <Button
+            onClick={() =>
+              playAudio(`${baseUrlAPI}/assets/game/pertanyaan${soal.voice}`)
+            }
+          >
             <img
               src="/assets/icons/speaker.svg"
               className="w-20 h-20 text-yellow"

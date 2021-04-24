@@ -30,7 +30,11 @@ function SesionDuaSatu({ question, handleClickAnswer }) {
     <Fade>
       <main className="container lg:w-1/2 lg:px-28 mx-auto flex flex-col items-center p-5  relative">
         <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
-        <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
+        <Button
+          onClick={() =>
+            playAudio(`${baseUrlAPI}/assets/game/pertanyaan${soal.voice}`)
+          }
+        >
           <img
             src="/assets/icons/speaker.svg"
             className="w-30 h-30 text-yellow"

@@ -71,7 +71,11 @@ const SesionTigaDua = ({
             Susun hingga menjadi kata yang sempurna!
           </h1>
           <div className="flex items-center">
-            <Button onClick={() => playAudio(baseUrlAPI + soal.voice)}>
+            <Button
+              onClick={() =>
+                playAudio(`${baseUrlAPI}/assets/game/pertanyaan${soal.voice}`)
+              }
+            >
               <img
                 src="/assets/icons/speaker.svg"
                 className="w-12 h-12 text-yellow"
