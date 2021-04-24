@@ -14,6 +14,7 @@ function Hour({ onChange, value }) {
   return (
     <div className=" flex flex-col justify-center items-center h-3/4 mb-5">
       <input
+        placeholder="12:00"
         type="time"
         name="hour"
         value={value.hour}
