@@ -149,7 +149,11 @@ const Soal = () => {
         eps: currentEps,
       })
       .then(() => {
-        router.push(`/latihan/soal?eps=${currentEps}`);
+        if (currentCoin >= 11) {
+          router.push("/latihan");
+        } else {
+          router.push(`/latihan/soal?eps=${currentEps}`);
+        }
         setUser({
           ...user,
           koin: currentCoin + coin,
