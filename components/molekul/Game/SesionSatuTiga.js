@@ -9,6 +9,7 @@ function SesionSatuTiga({ question, handleClickAnswer }) {
 
   const handleClick = (answer) => {
     if (answer.toUpperCase() === "MATA KAMU INDAH") {
+      handleClickAnswer(true);
     } else if (answer.toUpperCase() === "SEGELAS SUSU") {
       handleClickAnswer(true);
     } else if (answer.toUpperCase() == jawaban.join(" ").toUpperCase()) {

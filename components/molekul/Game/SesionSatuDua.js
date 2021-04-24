@@ -7,13 +7,6 @@ import HeaderContext from "../../../contexts/HeaderContext";
 function SesionSatuSatu({ question, handleClickAnswer }) {
   const { soal, jawaban } = question;
   const { baseUrlAPI } = useContext(HeaderContext);
-  const handleClick = (answer) => {
-    if (answer.toUpperCase() == jawaban.toUpperCase()) {
-      handleClickAnswer(true);
-    } else {
-      handleClickAnswer(false);
-    }
-  };
 
   const time = setTimeout(async () => {
     console.log("play");
@@ -21,7 +14,17 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
       `${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`
     );
     await audio.play();
+    clearTimeout(time);
   }, 500);
+
+  const handleClick = (answer) => {
+    clearTimeout(time);
+    if (answer.toUpperCase() == jawaban.toUpperCase()) {
+      handleClickAnswer(true);
+    } else {
+      handleClickAnswer(false);
+    }
+  };
 
   const playAudio = async (url) => {
     const audio = new Audio(url);
