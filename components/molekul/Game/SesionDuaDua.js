@@ -37,7 +37,7 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
         <div className="flex items-center">
           <Button
             onClick={() =>
-              playAudio(`${baseUrlAPI}/assets/game/pertanyaan${soal.voice}`)
+              playAudio(`${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`)
             }
           >
             <img

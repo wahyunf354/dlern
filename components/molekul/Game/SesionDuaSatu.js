@@ -32,7 +32,7 @@ function SesionDuaSatu({ question, handleClickAnswer }) {
         <h1 className="col-span-2 text-xl py-5">{soal.pertanyaan}</h1>
         <Button
           onClick={() =>
-            playAudio(`${baseUrlAPI}/assets/game/pertanyaan${soal.voice}`)
+            playAudio(`${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`)
           }
         >
           <img
