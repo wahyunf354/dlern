@@ -16,19 +16,18 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
     }
   };
 
-  const playAudio = async (url) => {
-    const audio = new Audio(url);
-    await audio.play();
+  const playAudio = (nameFiles) => {
+    nameFiles.forEach(async (e) => {
+      const link = `${baseUrlAPI}/assets/game/pertanyaan/${e}`;
+      const audio = new Audio(link);
+      await audio.play();
+    });
   };
   return (
     <Fade>
       <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
         <h1 className="text-xl">{soal.pertanyaan}</h1>
-        <Button
-          onClick={() =>
-            playAudio(`${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`)
-          }
-        >
+        <Button onClick={() => playAudio(soal.voice)}>
           <img
             src="/assets/icons/speaker.svg"
             className="w-30 h-30 text-yellow mb-5"

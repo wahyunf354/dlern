@@ -16,10 +16,13 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
     }
   };
 
-  const playAudio = async (url) => {
-    console.log("play");
-    const audio = new Audio(url);
-    await audio.play();
+  const playAudio = async (files) => {
+    files.split(" ").forEach(async (e) => {
+      const url = `${baseUrlAPI}/assets/game/pertanyaan/${e}`;
+      console.log("play");
+      const audio = new Audio(url);
+      await audio.play();
+    });
   };
 
   return (
@@ -33,11 +36,7 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
           </h1>
         )}
         <div className="flex items-center">
-          <Button
-            onClick={() =>
-              playAudio(`${baseUrlAPI}/assets/game/pertanyaan/${soal.voice}`)
-            }
-          >
+          <Button onClick={() => playAudio(soal.voice)}>
             <img
               src="/assets/icons/speaker.svg"
               className="w-20 h-20 text-yellow"
