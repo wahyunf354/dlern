@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import propTypes from "prop-types";
 import Button from "../../atom/Button";
+import HeaderContext from "../../../contexts/HeaderContext";
 
 function SesionSatuSatu({ question, handleClickAnswer }) {
   const { jawaban, soal } = question;
+  const { baseUrlAPI } = useContext(HeaderContext);
   const handleClick = (answer) => {
     if (answer.toUpperCase() == jawaban.toUpperCase()) {
       handleClickAnswer(true);
@@ -16,6 +18,11 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
 
   return (
     <main className="container lg:w-1/2 mx-auto grid md:justify-items-center md:grid-cols-3 grid-cols-2 p-5 gap-3 relative">
+      <img
+        src={`${baseUrlAPI}${soal.gambar}`}
+        alt="gambar"
+        className="w-40 md:col-span-3 col-span-2"
+      />
       <h1 className="md:col-span-3 col-span-2 self-start text-xl py-5">
         {soal.pertanyaan}
       </h1>

@@ -23,6 +23,7 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
       await audio.play();
     });
   };
+
   return (
     <Fade>
       <main className="container flex items-center flex-col mx-auto p-5 gap-3 relative">
