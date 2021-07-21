@@ -17,10 +17,17 @@ function SesionSatuSatu({ question, handleClickAnswer }) {
   };
 
   const playAudio = (nameFiles) => {
-    nameFiles.forEach(async (e) => {
-      const link = `${baseUrlAPI}/assets/game/pertanyaan/${e}`;
-      const audio = new Audio(link);
-      await audio.play();
+    nameFiles.forEach(async (e, i) => {
+      const url = `${baseUrlAPI}/assets/game/pertanyaan/${e}`;
+      if (i > 0) {
+        setTimeout(async () => {
+          const audio = new Audio(url);
+          await audio.play();
+        }, 1000);
+      } else {
+        const audio = new Audio(url);
+        await audio.play();
+      }
     });
   };
 

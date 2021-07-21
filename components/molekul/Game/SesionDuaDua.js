@@ -17,11 +17,18 @@ function SesionDuaDua({ question, handleClickAnswer, isTigaTiga }) {
   };
 
   const playAudio = async (files) => {
-    files.split(" ").forEach(async (e) => {
+    files.forEach(async (e, i) => {
       const url = `${baseUrlAPI}/assets/game/pertanyaan/${e}`;
       console.log("play");
-      const audio = new Audio(url);
-      await audio.play();
+      if (i > 0) {
+        setTimeout(async () => {
+          const audio = new Audio(url);
+          await audio.play();
+        }, 1000);
+      } else {
+        const audio = new Audio(url);
+        await audio.play();
+      }
     });
   };
 
